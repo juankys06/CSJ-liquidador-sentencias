@@ -1,0 +1,107 @@
+﻿
+@using Microsoft.AspNetCore.Identity
+
+
+<div class="row">
+    <div class="col-md-9">
+        <fieldset>
+            <legend>Criterios de Reporte</legend>
+            <form id="f_reporte" method="post">
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="tipo">Tipo de Reporte</label>
+                        <select name="tipo" id="tipo" class="form-control" required>
+                            <option value="Seleccionar">Seleccionar</option>
+                            <option value="Usuarios registrados">Usuarios registrados</option>
+                            <option value="Liquidaciones Realizadas">Liquidaciones Realizadas</option>
+                            <option value="Liquidaciones Guardadas">Liquidaciones Guardadas</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group" id="roles" hidden>
+                        <label for="Role">Roles</label>
+                        <select name="rolUser" id="rol" class="form-control">
+                            <option value="Seleccionar">Seleccionar</option>
+                            @{
+                                foreach (IdentityRole role in (IQueryable<IdentityRole>)ViewData["roles"])
+                                {
+                                    <option value="@role.Id">@role.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <button type="submit" class="btn btn-custom">Consultar</button>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+
+    <div class="col-md-12" id="reporteL" style="display:none;">
+        <fieldset>
+            <legend>Liquidaciones Realizadas</legend>
+            <table id="t_reporteL" class="table display" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha</th>
+                        <th>Tipo Codigo</th>
+                        <th>Usuario</th>
+
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </fieldset>
+    </div>
+
+    <div class="col-md-12" id="reporteDL" style="display:none;">
+        <fieldset>
+            <legend>Liquidaciones Guardadas</legend>
+            <table id="t_reporteDL" class="table display" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha</th>
+                        <th>Usuario</th>
+
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </fieldset>
+    </div>
+
+    <div class="col-md-12" id="reporteU" style="display:none;">
+        <fieldset>
+            <legend>Usuarios Registrados</legend>
+            <table id="t_reporteU" class="table display" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Correo</th>
+                        <th>Nombres</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </fieldset>
+    </div>
+
+    
+</div>
+<div>
+    <br /><br />
+    <a role="button" asp-area="" asp-controller="Admin" asp-action="DescargaExcel"><span class="fas fa-file-excel"><br />Descargar Excel General</span></a>
+    <br />
+</div>
+
+@section Scripts{
+    <script src="~/js/reporte.js" asp-append-version="true"></script>
+}

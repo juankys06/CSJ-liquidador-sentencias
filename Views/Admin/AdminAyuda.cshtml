@@ -1,0 +1,67 @@
+﻿@using System.Collections.Generic
+
+@model IQueryable<Ayuda>
+
+
+
+<div class="row" style="margin-top: 10px; @(TempData["Created"] == null ? "display: none;" : "")">
+    <div class="alert alert-success">@Html.Raw(TempData["Created"])</div>
+</div>
+<div class="row" style="margin-top: 10px; @(TempData["NotCreated"] == null ? "display: none;" : "")">
+    <div class="alert alert-danger">@Html.Raw(TempData["NotCreated"])</div>
+</div>
+<div class="row" style="margin-top: 10px; @(TempData["Removed"] == null ? "display: none;" : "")">
+    <div class="alert alert-danger">@Html.Raw(TempData["Removed"])</div>
+</div>
+<div class="row" style="margin-top: 10px; @(TempData["Error"] == null ? "display: none;" : "")">
+    <div class="alert alert-danger">@Html.Raw(TempData["Error"])</div>
+</div>
+<div class="row pull-left" style="margin-top: 10px;">
+    <a role="button" class="btn btn-success" asp-controller="Admin" asp-action="CreateAyuda">Crear Ayuda</a>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table id="userTable" class="table display table-responsive">
+            <caption>Administrar Ayuda</caption>
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Roles</th>
+                    <th>Documento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Ayuda ayu in @Model)
+                {
+                    <tr>
+                        <td>@ayu.titulo</td>
+                        <td>@ayu.roles</td>
+                        <td>@Html.ActionLink("Archivo", "DownloadFile", new { fileName = ayu.urlDocumento })</td>
+                        <td>
+                            @*<a asp-controller="Admin" asp-action="Edit" asp-route-id="@ayu.id">Editar</a>*@
+                            <a asp-controller="Admin" asp-action="DeleteAyuda" asp-route-id="@ayu.id">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        var userTable = $("#userTable").DataTable({
+            "paging": false,
+            "info": false,
+            "searching": true,
+            "language": {
+                "decimal": ",",
+                search: "Buscar:",
+                "thousands": ".",
+                "zeroRecords": "La tabla no contiene datos",
+                "infoEmpty": "Sin datos para mostrar."
+            },
+        });
+    </script>
+}

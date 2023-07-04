@@ -1,0 +1,80 @@
+﻿<partial name="_Form_SearchProcess" />
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1">Ingreso de Datos para Liquidación</a></li>
+        </ul>
+        <h2>@ViewData["Title"] de Capitales</h2>
+
+        <div class="tab1">
+            <div class="col-md-6">
+                <form method="post" asp-action="Indexacion" asp-controller="Liquidador" id="frm_indexacion">
+                    <h4 style="visibility:hidden;">Ignore</h4>
+                    <input type="hidden" name="idProceso" />
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Capital</td>
+                                <td><input type="text" class="no-numbar" name="capital" required /></td>
+                            </tr>
+                            <tr>
+                                <td>Fecha Inicial</td>
+                                <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_inicial" required /></td>
+                            </tr>
+                            <tr>
+                                <td>Fecha Final</td>
+                                <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_final" required /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <button class="btn btn-custom" type="submit">Liquidar</button>
+                    <button class="btn btn-custom" type="button" id="btn_guardar">Guardar</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h4>Resultado de la Indexación</h4>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Capital</td>
+                            <td><input type="number" step=".01" disabled id="capital" /> $</td>
+                        </tr>
+                        <tr>
+                            <td>IPC Inicial</td>
+                            <td><input type="text" disabled id="ipc_inicial" /></td>
+                        </tr>
+                        <tr>
+                            <td>IPC Final</td>
+                            <td><input type="text" disabled id="ipc_final" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-12">
+                <h3 style="text-align: center;">Liquidaciones Guardadas</h3>
+                <table class="display" id="guardados">
+                    <thead>
+                        <tr>
+                            <th>Nro. Único</th>
+                            <th>Tipo Liquidación</th>
+                            @*<th>Consecutivo</th>*@
+                            <th>Fecha Elaboración</th>
+                            <th>Creador</th>
+                            <th>Guardado</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/procesos.js" asp-append-version="true"></script>
+    <script src="~/js/indexacion.js" asp-append-version="true"></script>
+}

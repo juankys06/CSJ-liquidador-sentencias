@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IQueryable<IdentityRole>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-responsive">
+            <caption>Administrar Roles</caption>
+            <thead>
+                <tr>
+                    <td>Nombre</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (IdentityRole role in @Model)
+                {
+                    <tr>
+                        <td>@role.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

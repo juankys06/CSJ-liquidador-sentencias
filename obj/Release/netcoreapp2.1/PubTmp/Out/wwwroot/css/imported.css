@@ -1,0 +1,194 @@
+﻿.logo img {
+    width: 120px;
+    height: auto;
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+}
+
+.block-margin-img1 {
+    margin-top: 12%;
+}
+
+.site-title-content #searchBox h1 {
+    color: #19325b;
+    font-weight: 600;
+}
+
+.site-title-content #searchBox h1 {
+    color: #19325b;
+    font-weight: 600;
+}
+
+#banner {
+    margin-top: 0;
+    position: relative;
+}
+
+#banner {
+    margin-top: 0;
+    position: relative;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+.box-logo, .box-logo2 {
+    display: table;
+    margin: 0 auto;
+}
+
+.site-title-content {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#heading .currentDate {
+    /* color: #3c91a5; */
+    color: #337ab7;
+    text-transform: capitalize;
+    font-size: 18px;
+    margin-top: 10px;
+    display: block;
+}
+
+#searchBox .icons-search {
+    text-align: center;
+    /* font-size: 2.3em; */
+    padding: 0;
+}
+
+/* ---------- Footer ---------- */
+#footer {
+    color: #fff;
+    width: 100%;
+    background: #19325b url("../images/bg-footer.png") no-repeat 0 0;
+    background-position: center;
+    overflow: auto;
+    padding-top: 20px;
+}
+
+    #footer .cont h4 {
+        color: #fff;
+    }
+
+#footer_social_link {
+    margin-top: 20px;
+   
+}
+
+
+
+#footerMenu, #footer-social-link, #rama-footer, #reporte-visitas {
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+footer .container p, footer .container span, footer .container b {
+    color: #fff;
+}
+
+#footer_navigation li {
+    text-align: center;
+    padding: 0 5% 0 5%;
+}
+
+    #footer_navigation li + li {
+        border-left: 1px solid #3c91a5;
+    }
+
+#footer_navigation a, #footer_navigation span {
+    color: #65c0e7;
+}
+
+    #footer_navigation a:hover span, #footer_navigation a:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+/* ---------- Entidades ---------- */
+
+#logos_entidades {
+    margin-bottom: 20px;
+}
+
+#entidades .item-entidades {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+}
+
+    #entidades .item-entidades img {
+        opacity: 0.4;
+        filter: grayscale(100%);
+    }
+
+    #entidades .item-entidades a:hover img {
+        opacity: 1;
+        transform: scale(1.2);
+        filter: grayscale(0%);
+        transition: transform 1s, opacity 1.5s, filter 1.5s;
+    }
+
+    #entidades .item-entidades a img {
+        max-height: 90px;
+        max-width: 90px;
+    }
+/* ---------- Social Icons ---------- */
+#footer-social-link {
+    width: auto;
+    margin: 0 auto;
+    margin-left: 15px;
+    list-style-type: none;
+}
+
+    #footer-social-link a {
+        font-size: 2em;
+        color: #fff;
+    }
+
+        #footer-social-link a:hover {
+            text-decoration: none;
+        }
+
+#reporte-visita, #footer-social-link, #rama-footer {
+    margin-bottom: 20px;
+}
+
+    #footer-social-link li {
+        float: left;
+        margin-right: 15%;
+    }
+
+.block-visitas {
+    text-align: right;
+}
+
+.title-report {
+    color: #65c0e7;
+}
+
+#rama-footer p {
+    margin: 0 0 10px !important;
+}
+
+.col-xs-10 {
+    width: 100%;
+}
+.facebook.facebook.facebook a:hover {
+    color: #29487d;
+}
+.twitter.twitter.twitter a:hover {
+    color: #48aae6;
+}
+.youtube.youtube.youtube a:hover {
+    color: #ff0000;
+}
+.email.email.email a:hover {
+    color: initial;
+}

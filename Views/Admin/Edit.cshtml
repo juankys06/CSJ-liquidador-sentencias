@@ -1,0 +1,172 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model LiquidadorUser
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-controller="Admin" asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <!--
+            <div class="form-group">
+                <label asp-for="UserName">Nombre de Usuario</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div> -->
+            <div class="form-group">
+                <label asp-for="FullName">Nombre y Apellido</label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Role">Rol:</label>
+                <select name="role" class="form-control">
+                    @if (User.IsInRole("Administrador Seccional"))
+                    {
+                        <option value="USUARIO LIQUIDADOR">Usuario Liquidador</option>
+                        <option value="JUEZ">Juez</option>
+                    }
+                    else
+                    {
+                        foreach (IdentityRole role in (IQueryable<IdentityRole>)ViewData["roles"])
+                        {
+                            if (ViewData["role"].ToString() == role.Name)
+                            {
+                                <option value="@role.NormalizedName" selected>@role.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@role.NormalizedName">@role.Name</option>
+                            }
+
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="distrito">Distrito:</label>
+                <select id="distrito" name="distrito" class="form-control">
+                    <option value="">Seleccione un Distrito...</option>
+                    @{
+                        foreach (string distrito in (List<string>)ViewData["distritos"])
+                        {
+                            if (ViewData["distrito"].ToString().Equals( distrito ) )
+                            {
+                                <option value="@distrito" selected>@distrito</option>
+                            }
+                            else
+                            {
+                                <option value="@distrito">@distrito</option>
+                            }
+
+                        }
+                    }
+                </select>
+            </div>
+            @*<div class="form-group">
+                <label for="Municipios">Municipio:</label>
+                <select id="municipio" name="municipio" class="form-control">
+                    <option value="">Seleccione un municipio...</option>
+                    @{
+                        if (ViewData["municipios"] != null)
+                        {
+                            foreach (MunicipioDespacho municipio in (List<MunicipioDespacho>)ViewData["municipios"])
+                            {
+                                if (ViewData["municipio"] != null)
+                                {
+                                    if (ViewData["municipio"].ToString() == municipio.codigo)
+                                    {
+                                        <option value="@municipio.codigo" selected>@municipio.nombre</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@municipio.codigo">@municipio.nombre</option>
+                                    }
+                                }
+                                else
+                                {
+                                    <option value="@municipio.codigo">@municipio.nombre</option>
+                                }
+
+
+                            }
+                        }
+
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Entidad">Entidad:</label>
+                <select name="entidad" id="entidad" class="form-control">
+                    <option value="">Seleccione una entidad...</option>
+                    @{
+                        foreach (EntidadDespacho entidad in (List<EntidadDespacho>)ViewData["entidades"])
+                        {
+                            if (ViewData["entidad"].ToString() == entidad.codigo.ToString())
+                            {
+                                <option value="@entidad.codigo" selected>@entidad.nombre</option>
+                            }
+                            else
+                            {
+                                <option value="@entidad.codigo">@entidad.nombre</option>
+                            }
+
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Especialidad">Especialidad:</label>
+                <select name="especialidad" id="especialidad" class="form-control">
+                    <option value="">Seleccione una especialidad...</option>
+                    @{
+                        foreach (EspecialidadDespacho especialidad in (List<EspecialidadDespacho>)ViewData["especialidades"])
+                        {
+                            if (ViewData["especialidad"].ToString() == especialidad.codigo.ToString())
+                            {
+                                <option value="@especialidad.codigo" selected>@especialidad.nombre</option>
+                            }
+                            else
+                            {
+                                <option value="@especialidad.codigo">@especialidad.nombre</option>
+                            }
+
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Despacho">Despacho:</label>
+                <select name="despacho" id="despacho" class="form-control">
+                    <option value="">Seleccione un despacho...</option>
+                    @{
+                        if (ViewData["despachos"]!=null)
+                        {
+                            foreach (Despacho despacho in (List<Despacho>)ViewData["despachos"])
+                            {
+                                if (ViewData["despacho"].ToString() == despacho.codigo)
+                                {
+                                    <option value="@despacho.codigo" selected>@despacho.nombre</option>
+                                }
+                                else
+                                {
+                                    <option value="@despacho.codigo">@despacho.nombre</option>
+                                }
+
+                            }
+                        }
+
+                    }
+                </select>
+            </div>*@
+            <input type="submit" class="btn btn-custom" />
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/despacho.js" asp-append-version="true"></script>
+}

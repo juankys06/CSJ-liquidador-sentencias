@@ -1,0 +1,178 @@
+C:\Users\David\Documents\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.deps.json
+C:\Users\David\Documents\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.runtimeconfig.json
+C:\Users\David\Documents\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.runtimeconfig.dev.json
+C:\Users\David\Documents\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.dll
+C:\Users\David\Documents\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.pdb
+C:\Users\David\Documents\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.Views.dll
+C:\Users\David\Documents\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.Views.pdb
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.csprojAssemblyReference.cache
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.csproj.CoreCompileInputs.cache
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.RazorAssemblyInfo.cache
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.RazorAssemblyInfo.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.AssemblyInfoInputs.cache
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.AssemblyInfo.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.TagHelpers.input.cache
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.TagHelpers.output.cache
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.RazorCoreGenerate.cache
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\AccessDenied.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ConfirmEmail.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ForgotPassword.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ForgotPasswordConfirmation.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Login.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Logout.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\Index.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\PersonalData.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\_Layout.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Register.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ResetPassword.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ResetPasswordConfirmation.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\_ViewImports.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Auditoria.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Auditorias.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ConsultaTasas.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Create.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Edit.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\EditarTasa.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Index.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ResendConfirmation.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Roles.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Tasas.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Convertion\DolarToCOP.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Convertion\Tasas_Interes.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Convertion\UPAC_Pesos.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Convertion\UVR_Pesos.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Convertion\UVR_UPAC.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\Busqueda.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\CrearProceso.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Laboral\CalcSalario.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Laboral\Moratorio.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Laboral\Pension_ISS.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\CostasProceso.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\CuotasAdministracion.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\HipotecarioPesos.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\HipotecarioUVR.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\Indexacion.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\ReliquidacionUVR.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\Singular.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\Singular_Multiple.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\TasasBox\Default.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Form_SearchProcess.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.RazorTargetAssemblyInfo.cache
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.RazorTargetAssemblyInfo.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.Views.pdb
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.dll
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.pdb
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.csproj.CopyComplete
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\Ayuda.g.cshtml.cs
+C:\Users\David\Documents\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Reporte.g.cshtml.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\libman.json
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.deps.json
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.runtimeconfig.json
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.runtimeconfig.dev.json
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.dll
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.pdb
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.Views.dll
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\bin\Debug\netcoreapp2.1\liquidador_web.Views.pdb
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.AssemblyInfoInputs.cache
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.AssemblyInfo.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.RazorAssemblyInfo.cache
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.RazorAssemblyInfo.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.TagHelpers.input.cache
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.TagHelpers.output.cache
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.RazorCoreGenerate.cache
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ForgotPasswordConfirmation.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\PersonalData.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ResetPassword.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Auditoria.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Auditorias.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ConsultaTasas.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Create.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Edit.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\EditarTasa.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Reporte.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\ResendConfirmation.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Roles.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Tasas.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Convertion\DolarToCOP.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Convertion\Tasas_Interes.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Convertion\UPAC_Pesos.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Convertion\UVR_Pesos.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Convertion\UVR_UPAC.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\Ayuda.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\Busqueda.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\CrearProceso.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Laboral\CalcSalario.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Laboral\Moratorio.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Laboral\Pension_ISS.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\CostasProceso.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\CuotasAdministracion.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\HipotecarioPesos.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\HipotecarioUVR.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\Indexacion.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\ReliquidacionUVR.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\Singular.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\Singular_Multiple.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\TasasBox\Default.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Form_SearchProcess.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.RazorTargetAssemblyInfo.cache
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.RazorTargetAssemblyInfo.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.Views.pdb
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.dll
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.pdb
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.genruntimeconfig.cache
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.csproj.CopyComplete
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Liquidador\CuotasAlimentacion.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AdminAyuda.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\Razor\Views\Admin\CreateAyuda.cshtml.g.cs
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Daniel\Documents\.net core\liquidador\liquidador_web\obj\Debug\netcoreapp2.1\liquidador_web.csproj.AssemblyReference.cache

@@ -1,0 +1,101 @@
+﻿@model liquidador_web.Extra.Paginador<Auditoria>
+
+<div class="row">
+    <div class="col-md-12 formulario-auditoria">
+        <form asp-action="Auditorias" method="get" class="form-inline">
+            <div class="form-group">
+                <label for="desde">Desde:</label>
+                <input type="date" name="desde" value="@ViewData["actualDesde"]" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="hasta">Hasta:</label>
+                <input type="date" name="hasta" value="@ViewData["actualHasta"]" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="usuario">Usuario: </label>
+                <input type="email" name="usuario" value="@ViewData["actualUsuario"]" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="modulo">Módulo: </label>
+                @Html.DropDownList("modulo", new SelectListItem[] {
+                    new SelectListItem { Text = "", Value = "", Selected = string.IsNullOrEmpty(ViewData["actualModulo"] as string) ? true : false },
+                    new SelectListItem { Text = "Liquidaciones", Value = "Liquidaciones", Selected = ViewData["actualModulo"] != null && ViewData["actualModulo"].Equals("Liquidaciones") ? true : false },
+                    new SelectListItem { Text = "Usuarios", Value = "Usuarios", Selected = ViewData["actualModulo"] != null && ViewData["actualModulo"].Equals("Usuarios") ? true : false },
+                    new SelectListItem { Text = "Tasas", Value = "Tasas", Selected = ViewData["actualModulo"] != null && ViewData["actualModulo"].Equals("Tasas") ? true : false },
+                }, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-custom">Buscar</button>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <table class="table display">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Usuario</th>
+                    <th>Módulo</th>
+                    <th>Evento</th>
+                    <th>Descripción</th>
+                    @*<th>LogAnt</th>
+                    <th>LogAct</th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Auditoria elemento in Model)
+                {
+                    <tr>
+                        <td>@elemento.fecha</td>
+                        <td><email mail-to="@elemento.usuario">@elemento.usuario</email></td>
+                        <td>@elemento.modulo</td>
+                        <td>@elemento.evento</td>
+                        <td><a asp-action="Auditoria" asp-route-id="@elemento.ID" onclick="return popupCenter(this)">Ver Detalle</a></td>
+                        @*<td><a asp-action="Auditoria" asp-route-id="@elemento.ID" onclick="return popupCenter(this)">Ver Detalle</a></td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "none" : "initial";
+            var nextDisabled = !Model.HasNextPage ? "none" : "initial";
+        }
+
+        <a asp-action="Auditorias"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           asp-route-desde="@(ViewData["actualDesde"])"
+           asp-route-hasta="@(ViewData["actualHasta"])"
+           asp-route-modulo="@(ViewData["actualModulo"])"
+           asp-route-usuario="@(ViewData["actualUsuario"])"
+           style="display: @prevDisabled">
+            Anterior
+        </a>
+        @for (int i = 1; i < Model.TotalPages + 1; i++) {
+            <a asp-action="Auditorias" asp-route-pageNumber="@i"
+               asp-route-desde="@(ViewData["actualDesde"])"
+               asp-route-hasta="@(ViewData["actualHasta"])"
+               asp-route-modulo="@(ViewData["actualModulo"])"
+               asp-route-usuario="@(ViewData["actualUsuario"])"
+               style="font-weight: @(i == Model.PageIndex ? "bold" : "")">@i</a>
+        }
+        <a asp-action="Auditorias"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           asp-route-desde="@(ViewData["actualDesde"])"
+           asp-route-hasta="@(ViewData["actualHasta"])"
+           asp-route-modulo="@(ViewData["actualModulo"])"
+           asp-route-usuario="@(ViewData["actualUsuario"])"
+           style="display: @nextDisabled">
+            Siguiente
+        </a>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function popupCenter(link) {
+            var left = (screen.width / 2) - (720 / 2);
+            var top = (screen.height / 2) - (500 / 2);
+
+            var w = window.open(link.href, link.target || '_blank', 'menubar=no, toolbar=no, location=no, directories=no, status=no, scrollbars=no, resizable=no, dependent, width=720, height=500, left=' + left + ', top=' + top);
+            return w ? false : true;
+        }
+    </script>
+}

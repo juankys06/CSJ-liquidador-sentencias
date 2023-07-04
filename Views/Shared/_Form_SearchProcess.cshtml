@@ -1,0 +1,88 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.AspNetCore.Identity
+
+
+@inject SignInManager<LiquidadorUser> SignInManager
+@inject UserManager<LiquidadorUser> UserManager
+@{
+    Task<LiquidadorUser> GetCurrentUserAsync() => UserManager.GetUserAsync(User);
+    var user = await GetCurrentUserAsync();
+}
+<div class="row process-section">
+    <div class="col-md-12">
+        <form id="search_process" asp-controller="Liquidador" asp-action="Procesos" method="post">
+            <h3>Número Único del Proceso</h3>
+            @*@if (User.IsInRole("Administrador General"))
+            {*@
+                <input type="text" length="5" maxlength="5" pattern="\d{5}" name="ciudad" required/>
+                <input type="text" length="2" maxlength="2" pattern="\d{2}" name="entidad" required/>
+                <input type="text" length="2" maxlength="2" pattern="\d{2}" name="especialidad" required/>
+                <input type="text" length="3" maxlength="3" pattern="\d{3}" name="despacho" required/>
+                <input type="text" length="4" maxlength="4" pattern="\d{4}" name="año" autofocus required />
+                <input type="text" length="5" maxlength="5" pattern="\d{5}" name="codProceso" required />
+                <input type="text" length="2" maxlength="2" pattern="\d{2}" name="numero" required/>
+            @*}
+            else
+            {
+                @if (user.CodLocalidad != null)
+                {<input type="text" length="5" maxlength="5" value="@user.CodLocalidad" pattern="\d{5}" name="ciudad" readonly />}
+                else
+                {<input type="text" length="5" maxlength="5" value="" pattern="\d{5}" name="ciudad" required />}
+                @if (user.CodEntidad != null)
+                {<input type="text" length="2" maxlength="2" value="@user.CodEntidad" pattern="\d{2}" name="entidad" readonly />}
+                else
+                {<input type="text" length="2" maxlength="2" value="" pattern="\d{2}" name="entidad" required />}
+                @if (user.CodEspecialidad != null)
+                {<input type="text" length="2" maxlength="2" value="@user.CodEspecialidad" pattern="\d{2}" name="especialidad" readonly />}
+                else
+                {<input type="text" length="2" maxlength="2" value="" pattern="\d{2}" name="especialidad" required />}
+                @if (user.CodDespacho != null)
+                {<input type="text" length="3" maxlength="3" value="@user.CodDespacho.Substring(11)" pattern="\d{3}" name="despacho" readonly />}
+                else
+                {<input type="text" length="3" maxlength="3" value="" pattern="\d{3}" name="despacho" required />}
+
+                <input type="text" length="4" maxlength="4" value="" pattern="\d{4}" name="año" autofocus required />
+                <input type="text" length="5" maxlength="5" value="" pattern="\d{5}" name="codProceso" required />
+                <input type="text" length="2" maxlength="2" value="" pattern="\d{2}" name="numero" />
+            }*@
+            <button class="btn btn-custom" type="submit">Buscar Proceso</button>
+            <button class="btn btn-danger" type="reset">Limpiar Datos</button>
+
+            <div class="progress oculto" style="margin-top: 0.5em;">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                    Cargando Procesos... Por favor espere.
+                </div>
+            </div>
+
+            <h3>Información del Proceso</h3>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Número de Proceso:</td>
+                        <td><input type="text" disabled name="completo" /></td>
+                        <td><input type="button" class="btn btn-custom" disabled value="Anterior"><input type="button" class="btn btn-custom" disabled value="Siguiente"></td>
+                    </tr>
+                    <tr>
+                        <td>Tipo de Proceso</td>
+                        <td><input type="text" disabled name="tipo" /></td>
+                    </tr>
+                    <tr>
+                        <td>Clase de Proceso</td>
+                        <td><input type="text" disabled name="clase" /></td>
+                        <td>Sub-clase <input type="text" disabled name="descripcion" /></td>
+                    </tr>
+                    <tr>
+                        <td>Demandante</td>
+                        <td><input type="text" disabled name="demandante" /></td>
+                    </tr>
+                    <tr>
+                        <td>Demandado</td>
+                        <td><input type="text" disabled name="demandado" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

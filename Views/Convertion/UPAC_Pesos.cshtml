@@ -1,0 +1,44 @@
+﻿@model DateTime
+
+<h2>@ViewData["Message"]</h2>
+
+<div class="row">
+    <form asp-controller="Convertion" asp-action="UPAC_Pesos" id="convertionUPACPesos" method="post">
+        <div class="col-md-6">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><label>Cantidad</label></td>
+                        <td><input type="number" class="no-numbar" name="cantidad" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Fecha</label></td>
+                        <td><input type="date" name="fecha" value="@Model.ToString("yyyy-MM-dd")" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <center>
+                <label>Total: <span id="result"></span></label>
+            </center>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <h5>Convertir de:</h5>
+                <input type="radio" name="moneda" value="pesos" checked /> UPAC a Pesos
+                <br />
+                <input type="radio" name="moneda" value="upac" /> Pesos a UPAC
+            </div>
+            <div>
+                <h5>Última Actualización UPAC</h5>
+                <label>@Model.ToShortDateString()</label>
+            </div>
+            <button class="btn btn-custom" type="submit">Calcular</button>
+            <br />
+            <button class="btn btn-danger" type="reset">Nuevo Cálculo</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <script src="~/js/convertions.js" asp-append-version="true"></script>
+}

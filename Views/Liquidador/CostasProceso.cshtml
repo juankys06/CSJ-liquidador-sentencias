@@ -1,0 +1,97 @@
+﻿<partial name="_Form_SearchProcess" />
+
+<div class="row" style="margin-top: 10px; @(TempData["Error"] == null ? "display: none;" : "")">
+    <div class="alert alert-danger">@Html.Raw(TempData["Error"])</div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewData["Title"]</h2>
+
+        <div class="col-md-10">
+            <form asp-controller="Liquidador" asp-action="DescargarExcel" id="frm_costas">
+                <input type="hidden" name="idProceso" />
+                <table class="table" id="t_costas">
+                    <thead>
+                        <tr>
+                            <th>Asunto</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="asunto[]" value="Agencias en Derecho" /></td>
+                            <td><input type="text" class="no-numbar" name="valor[]" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="asunto[]" value="Expensas de Notificación"</td>
+                            <td><input type="text" class="no-numbar" name="valor[]" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="asunto[]" value="Registro"></td>
+                            <td><input type="text" class="no-numbar" name="valor[]" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="asunto[]" value="Publicaciones"></td>
+                            <td><input type="text" class="no-numbar" name="valor[]" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="asunto[]" value="Póliza Judicial"></td>
+                            <td><input type="text" class="no-numbar" name="valor[]" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="asunto[]" value="Honorarios Secuestre"></td>
+                            <td><input type="text" class="no-numbar" name="valor[]" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="asunto[]" value="Honorarios Curador"></td>
+                            <td><input type="text" class="no-numbar" name="valor[]" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="asunto[]" value="Honorarios Perito"></td>
+                            <td><input type="text" class="no-numbar" name="valor[]" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="asunto[]" value="Otros"></td>
+                            <td><input type="text" class="no-numbar" name="valor[]" /></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <th class="total">$ 0.00</th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <button type="submit" style="position: absolute; top: -10000px;"></button>
+            </form>
+        </div>
+
+        <div class="col-md-2">
+            <h5>Total Costas:</h5>
+            <label class="total">$ 0.00</label>
+            <br />
+            <button class="btn btn-custom" id="btn-guardar" style="width: 100px;">Guardar</button>
+            <button class="btn btn-custom" style="width: 100px; margin-top: 15px;" id="btn-print" form="frm_costas" type="submit">Imprimir</button>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <h3 style="text-align: center;">Liquidaciones Guardadas</h3>
+        <table class="display" id="guardados">
+            <thead>
+                <tr>
+                    <th>Nro. Único</th>
+                    <th>Tipo Liquidación</th>
+                    @*<th>Consecutivo</th>*@
+                    <th>Fecha Elaboración</th>
+                    <th>Creador</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/procesos.js" asp-append-version="true"></script>
+    <script src="~/js/costas.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,32 @@
+﻿<h2>@ViewData["Message"]</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td><label>Cantidad de UPAC</label></td>
+                    <td><input type="number" class="no-numbar" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <center>
+            <label>Total: <span id="result"></span></label>
+        </center>
+    </div>
+    <div class="col-md-6">
+        <div>
+            <h5>Convertir de:</h5>
+            <input type="radio" name="moneda" value="uvr" checked /> UPAC a UVR
+            <br />
+            <input type="radio" name="moneda" value="upac" /> UVR a UPAC
+        </div>
+        <button class="btn btn-custom" id="btn_upacuvr" style="margin-top: 10px; margin-bottom: 10px; width: 30%;">Calcular</button>
+        <br />
+        <button class="btn btn-custom" id="rbtn_upacuvr" style="margin-top: 10px; margin-bottom: 10px; width: 30%;">Nuevo Cálculo</button>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/convertions.js" asp-append-version="true"></script>
+}

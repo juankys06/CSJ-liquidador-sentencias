@@ -1,0 +1,96 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model LiquidadorUser
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" asp-controller="Admin" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!--
+    <div class="form-group">
+        <label asp-for="UserName" class="control-label"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div> -->
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label">Nombre y Apellido</label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Role">Rol:</label>
+                <select name="role" class="form-control">
+                    @if (User.IsInRole("Administrador Seccional"))
+                    {
+                        <option value="USUARIO LIQUIDADOR">Usuario Liquidador</option>
+                        <option value="JUEZ">Juez</option>
+                    }
+                    else
+                    {
+                        foreach (IdentityRole role in (IQueryable<IdentityRole>)ViewData["roles"])
+                        {
+                            <option value="@role.NormalizedName">@role.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Departamento">Distritos:</label>
+                <select id="distrito" name="distrito" class="form-control">
+                    <option value="">Seleccione un distrito...</option>
+                    @{
+                        foreach (string distrito in (List<string>)ViewData["distritos"])
+                        {
+                            <option value="@distrito">@distrito</option>
+                        }
+                    }
+                </select>
+            </div>
+            @*<div class="form-group">
+            <label for="Municipios">Municipio:</label>
+            <select id="municipio" name="municipio" class="form-control">
+                <option value="">Seleccione un municipio...</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Entidad">Entidad:</label>
+            <select name="entidad" id="entidad" class="form-control">
+                <option value="">Seleccione una entidad...</option>
+                @{
+                    foreach (EntidadDespacho entidad in (List<EntidadDespacho>)ViewData["entidades"])
+                    {
+                        <option value="@entidad.codigo">@entidad.nombre</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Especialidad">Especialidad:</label>
+            <select name="especialidad" id="especialidad" class="form-control">
+                <option value="">Seleccione una especialidad...</option>
+                @{
+                    foreach (EspecialidadDespacho especialidad in (List<EspecialidadDespacho>)ViewData["especialidades"])
+                    {
+                        <option value="@especialidad.codigo">@especialidad.nombre</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Despacho">Despacho:</label>
+            <select name="despacho" id="despacho" class="form-control">
+                <option value="">Seleccione un despacho...</option>
+            </select>
+        </div>*@
+            <input type="submit" class="btn btn-custom" value="Agregar" />
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/despacho.js" asp-append-version="true"></script>
+}

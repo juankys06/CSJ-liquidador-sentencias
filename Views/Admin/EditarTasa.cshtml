@@ -1,0 +1,71 @@
+﻿@using liquidador_web.Models
+@model liquidador_web.Models.Datasainte
+
+<h4>Modificar Tasa</h4>
+<hr />
+<div class="row" style="margin-top: 10px; @(TempData["Edited"] == null ? "display: none;" : "")">
+    <div class="alert alert-success">@Html.Raw(TempData["Edited"])</div>
+</div>
+<div class="row" style="margin-top: 10px; @(TempData["NotEdited"] == null ? "display: none;" : "")">
+    <div class="alert alert-danger">@Html.Raw(TempData["NotEdited"])</div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditarTasa" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IDTasa" />
+            <div class="form-group">
+                <label asp-for="TipoTasa" class="control-label">Tipo de Tasa</label>
+                <select name="TipoTasa" class="form-control">
+                    @foreach (var tasa in (TiposTasas[])ViewData["Tasas"])
+                    {
+                        if (tasa.ID == Model.TipoTasa) {
+                            <option value="@tasa.ID" selected>@tasa.Nombre (@tasa.ID)</option>
+                        } else {
+                            <option value="@tasa.ID">@tasa.Nombre (@tasa.ID)</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="TipoTasa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VigenteDesde" class="control-label">Vigente Desde</label>
+                <input asp-for="VigenteDesde" class="form-control" />
+                <span asp-validation-for="VigenteDesde" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VigenteHasta" class="control-label">Vigente Hasta</label>
+                <input asp-for="VigenteHasta" class="form-control" />
+                <span asp-validation-for="VigenteHasta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorTasa" class="control-label">Valor de la Tasa</label>
+                <input asp-for="ValorTasa" class="form-control" />
+                <span asp-validation-for="ValorTasa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Periodo" class="control-label">Período</label>
+                <span asp-validation-for="Periodo" class="text-danger"></span>
+                <select name="Periodo" class="form-control">
+                    @foreach (var periodo in (TiposPeriodo[])ViewData["Periodos"])
+                    {
+                        if (periodo.Nombre == Model.Periodo) {
+                            <option value="@periodo.Nombre" selected>@periodo.Nombre</option>
+                        } else {
+                            <option value="@periodo.Nombre">@periodo.Nombre</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResVigencia" class="control-label">Resolución</label>
+                <input asp-for="ResVigencia" class="form-control" />
+                <span asp-validation-for="ResVigencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Actualizar" class="btn btn-custom" />
+                <a role="button" class="btn btn-danger" asp-controller="Admin" asp-action="DeleteTasa" asp-route-id="@Model.IDTasa">Eliminar</a>
+            </div>
+        </form>
+    </div>
+</div>

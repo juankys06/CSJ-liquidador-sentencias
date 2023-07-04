@@ -1,0 +1,10 @@
+﻿<h2>Re-envío de correo electrónico</h2>
+<div class="row" style="margin-top: 10px; @(TempData["Confirmed"] == null ? "display: none;" : "")">
+    <div class="alert alert-warning">@Html.Raw(TempData["Confirmed"])</div>
+</div>
+<div class="row" style="margin-top: 10px; @(TempData["Sented"] == null ? "display: none;" : "")">
+    <div class="alert alert-success">@Html.Raw(TempData["Sented"])</div>
+</div>
+<div class="row" style="margin-top: 10px; @(TempData["Error"] == null ? "display: none;" : "")">
+    <p class="alert alert-danger">@Html.Raw(TempData["Error"])</p>
+</div>

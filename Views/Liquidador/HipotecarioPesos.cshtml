@@ -1,0 +1,213 @@
+﻿<partial name="_Form_SearchProcess" />
+<div class="alert alert-warning" id="AlertFailed" hidden>
+    <strong>Auto Guardado!</strong> No se encontró la llave del proceso.
+</div>
+<div class="alert alert-success" id="AlertSuccess" hidden>
+    <strong>Auto Guardado!</strong> Los datos se han guardado.
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab_formulario">Ingreso de datos para Liquidación</a></li>
+            <li><a data-toggle="tab" href="#tab_liquidacion">Detalle Liquidación</a></li>
+            <li><a data-toggle="tab" href="#tab_resumen">Resumen Liquidación</a></li>
+        </ul>
+        <input type="hidden" readonly name="r_tipo" value='@ViewData["Type"]' />
+        <div class="tab-content">
+            <div id="tab_formulario" class="tab-pane fade in active">
+                <form method="post" id="frm_hipotecario">
+                    <input type="hidden" name="idProceso" />
+                    <h2>Liquidación de intereses de crédito en Pesos</h2>
+                    <div class="col-md-4">
+                        <table class="table table-condensed">
+                            <tbody>
+                                <tr>
+                                    <td>Fecha Contrato</td>
+                                    <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_contrato" required /></td>
+                                </tr>
+                                <tr>
+                                    <td>Capital en Pesos</td>
+                                    <td><input type="text" class="no-numbar" name="capital" required /></td>
+                                </tr>
+                                <tr>
+                                    <td>Fecha Capital</td>
+                                    <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_capital" required /></td>
+                                </tr>
+                                <tr>
+                                    <td>Fecha Exigibilidad</td>
+                                    <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_exigibilidad" required /></td>
+                                </tr>
+                                <tr>
+                                    <td>Fecha Liquidación</td>
+                                    <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_liquidacion" required /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <fieldset>
+                            <legend>Vivienda de Interés Social</legend>
+                            <input type="radio" name="vis" value="true" required /> VIS
+                            <input type="radio" name="vis" value="false" /> NO VIS
+                            <br />
+                            <input type="button" class="btn btn-custom" value="Ver Tabla" id="btn_ivs" />
+                        </fieldset>
+                    </div>
+                    <div class="col-md-4">
+                        <fieldset>
+                            <legend>Tasas Pactadas</legend>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Interés Plazo</td>
+                                        <td><input type="number" min="0" max="99" step=".01" name="i_plazo" required /></td>
+                                        <td> % EA</td>
+                                    </tr>
+                                    <tr><td></td><td><center>MAX<span id="maxi_plazo"></span></center></td><td></td></tr>
+                                    <tr>
+                                        <td>Interés Mora</td>
+                                        <td><input type="number" min="0" max="99" step=".01" name="i_mora" required /></td>
+                                        <td> % EA</td>
+                                    </tr>
+                                    <tr><td></td><td><center>MAX<span id="maxi_mora"></span></center></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </fieldset>
+                        <br /><br />
+                        <button class="btn btn-custom">Liquidar</button>
+                        <button class="btn btn-custom" type="button" id="guardar" disabled>Guardar</button>
+                        <br />
+                        <label>Observaciones:</label><br />
+                        <textarea name="observaciones" style="resize:none; overflow:auto;" rows="5" cols="40"></textarea>
+                        <input type="hidden" name="idProceso" />
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#t_abonos">Abonos</a></li>
+                            <li><a data-toggle="tab" href="#t_capitales">Capitales</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="t_abonos" class="tab-pane fade in active">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Fecha</th>
+                                            <th>Pago</th>
+                                            <th>Seguros</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><i class="fa fa-trash delete"></i></td>
+                                            <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_abono[]" /></td>
+                                            <td><input type="text" class="no-numbar" name="pago_abono[]" /></td>
+                                            <td><input type="text" class="no-numbar" name="seguro_abono[]" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="t_capitales" class="tab-pane fade">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Fecha Capital</th>
+                                            <th>Monto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><i class="fa fa-trash delete"></i></td>
+                                            <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_capitales[]" /></td>
+                                            <td><input type="text" class="no-numbar" name="capitales[]" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="button" class="btn btn-custom" id="btn_add_capitales" value="Completar Capitales" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="col-md-12">
+                    <h3 style="text-align: center;">Liquidaciones Guardadas</h3>
+                    <table class="display" id="guardados">
+                        <thead>
+                            <tr>
+                                <th>Nro. Único</th>
+                                <th>Tipo Liquidación</th>
+                                @*<th>Consecutivo</th>*@
+                                <th>Fecha Elaboración</th>
+                                <th>Creador</th>
+                                <th>Guardado</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab_liquidacion" class="tab-pane fade">
+                <table class="table display">
+                    <thead>
+                        <tr>
+                            <th>Desde (dd/mm/aaaa)</th>
+                            <th>Hasta (dd/mm/aaaa)</th>
+                            <th>NoDias</th>
+                            <th>Tasa Remuneratoria</th>
+                            <th>Tasa Mora</th>
+                            <th>Interés Aplicado</th>
+                            <th>Interes Diario Aplicado</th>
+                            <th>Capital</th>
+                            <th>Capital a Liquidar</th>
+                            <th>Abonos</th>
+                            <th>Abono a capital</th>
+                            <th>Abono Interes Mora</th>
+                            <th>Abono Interes Plazo</th>
+                            <th>Int Plazo<br />Período</th>
+                            <th>Interes Mora<br />Período $</th>
+                            <th>Saldo<br />Int Plazo</th>
+                            <th>Saldo Int<br />Mora</th>
+                            <th>Sub Total</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="tab_resumen" class="tab-pane fade">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Asunto</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <br /><br />
+                <a role="button" asp-area="" asp-controller="Liquidador" asp-action="DescargaExcel" id="descargarExcel"><span class="fas fa-file-excel"><br />Descargar Excel</span></a>
+                @if (User.IsInRole("Juez"))
+                {
+                    <a role="button" href="#" id="descargarPdf"><span class="far fa-file-pdf"><br />Descargar PDF</span></a>
+                }
+            </div>
+
+            <div id="dialog" title="Valor Máximo Vivienda de Interés Social">
+                <table class="display">
+                    <thead>
+                        <tr>
+                            <th>Desde</th>
+                            <th>Hasta</th>
+                            <th>ValorMaximo</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/procesos.js" asp-append-version="true"></script>
+    <script src="~/js/hipotecario.js" asp-append-version="true"></script>
+}

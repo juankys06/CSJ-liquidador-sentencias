@@ -1,0 +1,342 @@
+﻿@page
+@model LoginModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Liquidador</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/navigation.css" />
+        <link rel="stylesheet" href="~/css/imported.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/navigation.css" />
+        <link rel="stylesheet" href="~/css/imported.css" />
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    </environment>
+</head>
+<body>
+    <header id="banner" role="banner">
+        <div id="heading">
+
+            <div id="top_navigation">
+                <ul>
+                    <li>
+                        <a href="https://www.ramajudicial.gov.co/web/consejo-superior-de-la-judicatura/portal/inicio" target="_blank" title="Consejo Superior de la Judicatura"><span style="background-color:#91BE91;">Consejo Superior de la Judicatura</span></a>
+                    </li>
+                    <li>
+                        <a href="http://www.cortesuprema.gov.co/" target="_blank" title="Corte Suprema de Justicia"><span style="background-color:#FFD20F; color:black;">Corte Suprema de Justicia</span></a>
+                    </li>
+                    <li>
+                        <a href="http://www.consejodeestado.gov.co/" target="_blank" title="Consejo de Estado"><span style="background-color:#4F90C8;">Consejo de Estado</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.corteconstitucional.gov.co/" target="_blank" title="Corte Constitucional"><span style="background-color:#CB302F;">Corte Constitucional</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.ramajudicial.gov.co/web/comision-nacional-de-disciplina-judicial" target="_blank" title="Comisión Nacional de Disciplina Judicial"><span style="background-color:#0a7a39; line-height: 1;">Comisión Nacional de Disciplina Judicial</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="site-title-content col-md-3">
+                <div class="box-logo"> <a class="logo custom-logo" href="https://www.ramajudicial.gov.co" title="Ir a Rama Judicial"> <img alt="Rama Judicial" class="block-margin-img1" height="110" src="/images/Logo1.PNG"> </a> </div>
+            </div>
+            <div class="site-title-content col-md-6">
+                @*<span class="currentDate">noviembre 15 - 2018</span>*@
+                <span class="currentDate">@DateTime.Today.ToString("MMMM dd - yyyy", new System.Globalization.CultureInfo("es-CO"))</span>
+                <div id="searchBox" class="row">
+                    <div class="col-xs-10">
+                        <h1>LIQUIDADOR<br>DE SENTENCIAS</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="site-title-content col-md-3 hidden-xs">
+                <div class="box-logo">
+                    <a class="logo secondLogo" href="https://www.ramajudicial.gov.co/portal-rama-theme/images/cortes/escudo_colombiaT.png">
+                        <img src="~/images/EscudoColombia.png" class="block-margin-img1" alt="Presidencia de la República de Colombia">
+                    </a>
+                </div>
+            </div>
+            <div id="login">
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </header>
+
+    @*<nav class="navbar navbar-inverse navbar-fixed-top" id="navigation">*@
+    <nav class="navbar navbar-inverse" id="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Liquidador</a>
+                -->
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a></li>
+                        @if (User.IsInRole("Administrador General") || User.IsInRole("Usuario Liquidador") || User.IsInRole("Juez"))
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Liquidaciones
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li class="dropdown-item"><a asp-area="" asp-controller="Liquidador" asp-action="Singular">Ejecutivo Singular</a></li>
+                                    <li class="dropdown-item">
+                                        <a asp-area="" asp-controller="Liquidador" asp-action="Singular_Multiple">Ejecutivo Singular Múltiples capitales diferentes fechas y diferentes intereses</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a asp-area="" asp-controller="Liquidador" asp-action="CuotasAdministracion">Cuotas de Administración</a>
+                                    </li>
+                                    <br />
+                                    <li class="dropdown-submenu">
+                                        <a class="test">Hipotecarios <span class="glyphicon glyphicon-triangle-right"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item"><a asp-area="" asp-controller="Liquidador" asp-action="HipotecarioUVR">Intereses Créditos Vivienda en UVR</a></li>
+                                            <li class="dropdown-item"><a asp-area="" asp-controller="Liquidador" asp-action="HipotecarioPesos">Intereses Créditos Vivienda en Pesos</a></li>
+                                            <li class="dropdown-item"><a asp-area="" asp-controller="Liquidador" asp-action="ReliquidacionUVR">Reliquidación en UVR</a></li>
+                                        </ul>
+                                    </li>
+                                    <br />
+                                    <li class="dropdown-item"><a asp-area="" asp-controller="Liquidador" asp-action="Indexacion">Indexación</a></li>
+                                    <br />
+                                    <li class="dropdown-item"><a asp-area="" asp-controller="Liquidador" asp-action="CostasProceso">Costas del Proceso</a></li>
+                                </ul>
+                            </li>
+                        }
+                        @*
+                <li>
+                    <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Laboral
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li class="dropdown-item"><a asp-area="" asp-controller="Laboral" asp-action="CalcSalario">Calculadora Salarial</a></li>
+                        <li class="dropdown-item"><a asp-area="" asp-controller="Laboral" asp-action="Moratorio">Indexaciones e Indemnizaciones moratorias</a></li>
+                        <li class="dropdown-item"><a asp-area="" asp-controller="Laboral" asp-action="Pension_ISS">Liquidación de Pensiones ISS</a></li>
+                    </ul>
+                </li>
+                        *@
+                        <li>
+                            <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Conversiones
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li class="dropdown-item"><a asp-area="" asp-controller="Convertion" asp-action="Tasas_Interes">Tasa Efectiva y Nóminal</a></li>
+                                <li class="dropdown-submenu">
+                                    <a role="button">Monedas y Unidades <span class="glyphicon glyphicon-triangle-right"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a asp-area="" asp-controller="Convertion" asp-action="DolarToCOP">Dólares Americanos y Pesos</a></li>
+                                        <li class="dropdown-item"><a asp-area="" asp-controller="Convertion" asp-action="UVR_Pesos">UVR y Pesos</a></li>
+                                        <li class="dropdown-item"><a asp-area="" asp-controller="Convertion" asp-action="UVR_UPAC">UVR y UPAC</a></li>
+                                        <li class="dropdown-item"><a asp-area="" asp-controller="Convertion" asp-action="UPAC_Pesos">UPAC y Pesos</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tablas Básicas
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                @if (User.IsInRole("Administrador General") || User.IsInRole("Administrador de Actualización de las Tasas"))
+                                {
+                                    <li class="dropdown-item"><a asp-controller="Admin" asp-action="Tasas">Captura de Tasas</a></li>
+                                }
+                                else
+                                {
+                                    <li class="dropdown-item disabled"><a>Captura de Tasas</a></li>
+                                }
+                                <li class="dropdown-item"><a asp-controller="Admin" asp-action="ConsultaTasas">Consulta de Tasas</a></li>
+                            </ul>
+                        </li>
+
+                        @if (User.IsInRole("Administrador General") || User.IsInRole("Administrador Seccional"))
+                        {
+                            <li><a asp-controller="Admin" asp-action="Index">Administración de Usuarios</a></li>
+                        }
+                        @if (User.IsInRole("Administrador General"))
+                        {
+                            <li><a asp-controller="Admin" asp-action="Auditorias">Auditoría</a></li>
+                        }
+                        <li><a asp-controller="Home" asp-action="Busqueda">Búsqueda</a></li>
+                    }
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container body-content" id="content">
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 2rem;">
+                <center>
+                    <section style="width: 33%; text-align: center;">
+                        <h2>@ViewData["Title"]</h2>
+                        <form method="post">
+                            <h4></h4>
+                            <hr />
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Input.Email"></label>
+                                <input asp-for="Input.Email" class="form-control" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Password"></label>
+                                <input asp-for="Input.Password" class="form-control" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label asp-for="Input.RememberMe">
+                                        <input asp-for="Input.RememberMe" />
+                                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="g-recaptcha" data-sitekey="@ViewData["ReCaptchaKey"]"></div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default">Iniciar Sesión</button>
+                            </div>
+                            <div class="form-group">
+                                <p>
+                                    <a asp-page="./ForgotPassword">¿Olvidó su contraseña?</a>
+                                </p>
+                                @*
+                                    <p>
+                                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registarse</a>
+                                    </p>
+                                *@
+                            </div>
+                        </form>
+                    </section>
+                </center>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <footer id="footer">
+        <div id="footerMenu" class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12"></div>
+            <div class="sort-pages modify-pages " id="footer_navigation">
+                <ul>
+                    <li class=""> <a href="https://www.ramajudicial.gov.co/web/informacion/cuentas-de-correo-para-notificaciones"><span>Cuentas de correo para Notificaciones Judiciales</span></a></li>
+                    <li class=""> <a href="https://www.ramajudicial.gov.co/portal/politicas-de-privacidad-y-condiciones-de-uso"><span>Politicas de Privacidad y Condiciones de Uso</span></a></li>
+                    <li class=""> <a href="https://login.microsoftonline.com/login.srf?wa=wsignin1.0&rpsnv=3&ct=1402516770&rver=6.4.6456.0&wp=MCMBI&wreply=https:%2F%2Fportal.office.com%2Flanding.aspx%3Ftarget%3D%252fdefault.aspx&lc=3082&id=501392" target="_blank"><span>Correo Institucional</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div id="rama-footer" class="row">
+            <div class="col-lg-4 col-md-4 col-xs-12 block-redes">
+                <strong>Síganos</strong>
+                <p>
+
+                </p>
+                <ul id="footer-social-link" class="">
+
+                    <style>
+                        .facebook.facebook.facebook a:hover {
+                            color: #29487d;
+                        }
+                    </style>
+                    <style>
+                        .twitter.twitter.twitter a:hover {
+                            color: #48aae6;
+                        }
+                    </style>
+                    <style>
+                        .youtube.youtube.youtube a:hover {
+                            color: #ff0000;
+                        }
+                    </style>
+                    <style>
+                        .email.email.email a:hover {
+                            color: initial;
+                        }
+                    </style>
+                    <li class=" facebook"> <a href="https://www.facebook.com/judicaturacsj"><i class="fa fa-facebook-f"></i></a> </li>
+                    <li class=" twitter"> <a href="http://www.twitter.com/judicaturacsj"><i class="fa fa-twitter"></i></a> </li>
+                    <li class=" youtube"> <a href="https://www.youtube.com/channel/UCBHrdbfpLE2lNsu4CTpDanA"><i class="fa fa-youtube"></i></a> </li>
+                    <li class=" email"> <a href="mailto:info@cendoj.ramajudicial.gov.co"><i class="fa fa-envelope"></i></a> </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <h3 style="text-align: center;"> <span style="color:#ffffff;">Rama Judicial </span></h3>
+                <p style="text-align: center;"> <span style="color:#ffffff;">Calle 12 No. 7 - 65 Bogotá Colombia<br> PBX: (571) 565 8500 - E-mail: info@cendoj.ramajudicial.gov.co<br> Acceder al Directorio de Despachos Judiciales</span></p>
+                <p style="text-align: center;"> <span style="color:#ffffff;">Horario de Atención Lunes a Viernes<br> 8:00 a.m. a 1:00 p.m. - 2:00 p.m. a 5:00 p.m. </span></p>
+            </div>
+
+        </div>
+        <div id="reporte-visitas" class="row"> </div>
+        <div id="accesibilityContent" class="aui-helper-hidden"> </div>
+    </footer>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery/dist/jquery.form.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+        <script src="https://cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/lib/jquery/dist/jquery.form.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+        <script src="https://cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0"></script>
+    </environment>
+
+    <partial name="_ValidationScriptsPartial" />
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</body>
+</html>

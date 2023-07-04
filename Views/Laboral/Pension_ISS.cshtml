@@ -1,0 +1,117 @@
+﻿<h2>Pensiones_ISS</h2>
+
+<partial name="_Form_SearchProcess" />
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab1">Base de Liquidación</a></li>
+            <li><a data-toggle="tab" href="#">Detalle Liquidación</a></li>
+            <li><a data-toggle="tab" href="#">Costas del Proceso</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="tab1" class="tab-pane fade in active">
+                <form method="post" id="frm_pension">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <label>Liquidar</label>
+                            <select name="liquidar" required>
+                                <option value="1">Pensión del ISS</option>
+                                <option value="2">Pensión por fondo de Pensiones</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Fecha de Nacimiento</label>
+                                <input type="date" name="f_nacimiento" required />
+                                <label>Fecha Liquidación</label>
+                                <input type="date" name="f_liquidacion" required />
+                            </div>
+                            <div class="col-md-8">
+                                <fieldset>
+                                    <legend>Edad del Afiliado</legend>
+                                    <h2><span id="año">0</span> <span id="txt_años">Años</span> <span id="meses">0</span> <span id="txt_meses">Meses</span></h2>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="number" />
+                            </div>
+                            <div class="col-md-8">
+                                <label>Sexo del Afiliado</label>
+                                <select name="sexo">
+                                    <option>Masculino</option>
+                                    <option>Femenino</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <fieldset>
+                                <legend>Valor de la Pensión</legend>
+                                <p></p>
+                            </fieldset>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-block" type="submit">Liquidar</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-block" type="button">Grabar</button>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-block" type="reset">Cancelar</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
+
+                <div class="col-md-6">
+                    <fieldset>
+                        <form method="post" id="frm_cotizacion">
+                        <div class="row">
+                            <legend>Períodos de Cotización</legend>
+                            <label>F Inicial</label>
+                            <input type="date" name="fechaInicio" required />
+                            <label>F Final</label>
+                            <input type="date" name="fechaFinal" required />
+                            <input type="button" value="Importar Pagos" />
+                        </div>
+                        <div class="row">
+                            Ingreso Base de <input type="text" class="no-numbar" name="ingresos" />
+                            <button type="submit" class="btn" id="btn_agregar">Agregar</button>
+                        </div>
+                        </form>
+                        <div class="row">
+                            <table class="table" id="tbl_cotizacion">
+                                <thead>
+                                    <tr>
+                                        <th>Fec. Inicial</th>
+                                        <th>Fec. Final</th>
+                                        <th>Vr Salario</th>
+                                        <th>Días Cotizados</th>
+                                        <th>Valor Día</th>
+                                        <th>Base Período</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="row">
+                            Total días cotizados: <span id="total_dias">0</span>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/procesos.js" asp-append-version="true"></script>
+    <script src="~/js/pension.js" asp-append-version="true"></script>
+}

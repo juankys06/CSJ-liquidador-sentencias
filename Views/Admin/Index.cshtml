@@ -1,0 +1,80 @@
+﻿@using System.Collections.Generic
+
+@model IQueryable<LiquidadorUser>
+
+@{
+    List<IList<string>> roles = (List<IList<string>>)ViewData["roles"];
+    int count = 0;
+}
+
+<div class="row" style="margin-top: 10px; @(TempData["UserCreated"] == null ? "display: none;" : "")">
+    <div class="alert alert-success">@Html.Raw(TempData["UserCreated"])</div>
+</div>
+<div class="row" style="margin-top: 10px; @(TempData["Eliminado"] == null ? "display: none;" : "")">
+    <div class="alert alert-success">@Html.Raw(TempData["Eliminado"])</div>
+</div>
+<div class="row" style="margin-top: 10px; @(TempData["Activated"] == null ? "display: none;" : "")">
+    <div class="alert alert-success">@Html.Raw(TempData["Activated"])</div>
+</div>
+<div class="row" style="margin-top: 10px; @(TempData["Error"] == null ? "display: none;" : "")">
+    <div class="alert alert-danger">@Html.Raw(TempData["Error"])</div>
+</div>
+<div class="row pull-left" style="margin-top: 10px;">
+    <a role="button" class="btn btn-success" asp-controller="Admin" asp-action="Create">Crear Usuario</a>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table id="userTable" class="table display table-responsive">
+            <caption>Administrar Usuarios</caption>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo Electrónico</th>
+                    <th>Roles</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (LiquidadorUser user in @Model)
+                {
+                    <tr>
+                        <td>@user.FullName</td>
+                        <td>@user.Email</td>
+                        <td>
+                            @foreach (string role in roles[count])
+                            {
+                                <span>@role, </span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-controller="Admin" asp-action="Edit" asp-route-id="@user.Id">Editar</a>
+                            @* <a asp-controller="Admin" asp-action="Delete" asp-route-id="@user.Id">Eliminar</a> *@
+                            <a asp-controller="Admin" asp-action="Activate" asp-route-id="@user.Id" asp-route-status="@(!user.Active)">@(user.Active ? "Inactivar" : "Activar")</a>
+                            @if (!user.EmailConfirmed) {
+                                <a asp-controller="Admin" asp-action="ResendConfirmation" asp-route-id="@user.Id">Reenviar Confirmación</a>
+                            }
+                        </td>
+                    </tr>
+                    count++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        var userTable = $("#userTable").DataTable({
+            "paging": false,
+            "info": false,
+            "searching": true,
+            "language": {
+                "decimal": ",",
+                search: "Buscar:",
+                "thousands": ".",
+                "zeroRecords": "La tabla no contiene datos",
+                "infoEmpty": "Sin datos para mostrar."
+            },
+        });
+    </script>
+}

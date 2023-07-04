@@ -1,0 +1,99 @@
+﻿<h2>@ViewData["Title"]</h2>
+
+<partial name="_Form_SearchProcess" />
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1">Base de Liquidación</a></li>
+            <li><a href="#">Costas del Proceso</a></li>
+        </ul>
+
+        <div id="tab1">
+            <div class="col-md-6">
+                <form method="post" id="frm_moratorio">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Último Salario</td>
+                                <td><input type="text" class="no-numbar" name="salario" required /></td>
+                            </tr>
+                            <tr>
+                                <td>Liquidar</td>
+                                <td>
+                                    <select name="liquidar" required>
+                                        <option value="indemnizacion">Indemnización Moratoria</option>
+                                        <option value="indexacion">Indexación</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Período a Liquidar</h4>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Fecha Inicial</td>
+                                <td><input type="date" name="fechaInicial" required /></td>
+                                <td>Fecha Final</td>
+                                <td><input type="date" name="fechaFinal" required /></td>
+                            </tr>
+                            <tr>
+                                <td>IPC Inicial</td>
+                                <td><input type="number" name="ipc_inicial" disabled /></td>
+                                <td>IPC Final</td>
+                                <td><input type="number" name="ipc_final" disabled /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <label>Otras sanciones incluídas en la liquidación: <input type="text" class="no-numbar" name="otros" /></label>
+
+                    <div class="col-md-6"><button type="submit" class="btn btn-block">Liquidar</button></div>
+                    <div class="col-md-6"><button type="button" class="btn btn-block">Grabar</button></div>
+                    <div class="col-md-6"><button type="button" class="btn btn-block">Exportar a Excel</button></div>
+                    <div class="col-md-6"><button type="reset" class="btn btn-block">Cancelar</button></div>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <table class="table" id="tbl_indemnizacion">
+                    <caption>Resultados</caption>
+                    <thead>
+                        <tr>
+                            <th>Fec. Inicial</th>
+                            <th>Fec. Final</th>
+                            <th>Dias</th>
+                            <th>Capital</th>
+                            <th>Vr Dia</th>
+                            <th>Vr Mora</th>
+                            <th>VR Acumulado</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <table class="table oculto" id="tbl_indexacion">
+                    <caption>Resultados</caption>
+                    <thead>
+                        <tr>
+                            <th>Fec. Inicial</th>
+                            <th>Fec. Final</th>
+                            <th>IPC Inicial</th>
+                            <th>IPC Final</th>
+                            <th>Vr Indexado</th>
+                            <th>Vr Mora</th>
+                            <th>C. Monetaria</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/procesos.js" asp-append-version="true"></script>
+    <script src="~/js/indemnizaciones.js" asp-append-version="true"></script>
+}

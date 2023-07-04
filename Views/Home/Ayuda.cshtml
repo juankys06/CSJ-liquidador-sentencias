@@ -1,0 +1,130 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IQueryable<Ayuda>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<p><br /></p>
+<div id="preguntas_frecuentes">
+    <div class="col-preguntas">
+        <div class="row-preguntas">
+            <span class="title">Ayuda </span>
+        </div>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+            @{ 
+                var cuenta = 0;
+            }
+            @foreach (Ayuda ayu in @Model)
+            {
+                var roles = ayu.roles.Split("/");
+                foreach (string r in roles)
+                {
+                    if (User.IsInRole(r))
+                    { 
+                        <div class="panel panel-default">
+                            <div role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-@cuenta" aria-expanded="false" aria-controls="collapseThree">
+                                        @ayu.titulo
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse-@cuenta" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body" style="text-align: center;">
+                                    <iframe width="1000" height="500" src="@ayu.urlDocumento.Replace("wwwroot","")" frameborder="0" type="application/pdf" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                cuenta++;
+            }
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    #preguntas_frecuentes {
+        padding: 0 15px;
+        margin: 0 auto;
+        max-width: 1170px;
+    }
+
+    .row-preguntas {
+        display: flex;
+        flex-flow: row;
+        width: 100%;
+        padding: 5px;
+        font-size: 20px;
+    }
+
+    .col-preguntas {
+        width: 100%;
+        background-color: #f2f3f4;
+        display: flex;
+        flex-flow: column;
+        padding: 10px;
+    }
+
+    .title {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: flex-start;
+        color: #19325b;
+        font-size: 31px;
+        font-weight: bold;
+        font-family: Roboto;
+    }
+
+    #accordion .panel-title a {
+        display: block;
+        padding: 20px;
+        font-size: 18px;
+        margin-bottom: -8px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        background: #19325b;
+        border: none;
+        border-radius: 0;
+        position: relative;
+        transition: all 0.3s ease 0s;
+        text-decoration: none;
+    }
+
+    .panel {
+        margin-bottom: inherit !important;
+    }
+
+    .panel-default {
+        border-color: white !important;
+    }
+
+    #accordion .panel-title a.collapsed {
+        background: #fff;
+        color: #19325b;
+    }
+
+        #accordion .panel-title a.collapsed:hover {
+            background: #19325b;
+            color: #fff;
+        }
+
+        #accordion .panel-title a:after,
+        #accordion .panel-title a.collapsed:after {
+            content: "\f106";
+            font-family: fontawesome;
+            font-size: 25px;
+            color: #fff;
+            float: right;
+            top: 17px;
+            transition: all 0.3s ease-in-out 0s;
+        }
+
+        #accordion .panel-title a.collapsed:after {
+            content: "\f107";
+            color: #616161;
+        }
+
+    a:hover {
+        text-decoration: none;
+    }
+</style>

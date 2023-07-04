@@ -1,0 +1,162 @@
+﻿<partial name="_Form_SearchProcess" />
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab-formulario">Ingreso de datos para Liquidación</a></li>
+            <li><a data-toggle="tab" href="#tab-liquidacion">Detalle Liquidación</a></li>
+            <li><a data-toggle="tab" href="#tab-resumen">Resumen Liquidación</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="tab-formulario" class="tab-pane fade in active">
+                <form method="post" id="frm_reliquidacion">
+                    <h2>@ViewData["Title"]</h2>
+                    <div class="col-md-4">
+                        <fieldset class="row">
+                            <legend class="block-title-fieldset">Saldo Inicial</legend>
+                            <table class="tbl-parm-reliq">
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="saldoIEnUPAC" value="false" required /> Pesos
+                                        <input type="radio" name="saldoIEnUPAC" value="true" /> UPAC
+                                    </td>
+                                    <td><input type="number" class="no-numbar" name="monto_sinicial" step=".01" required /></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 2%;">Fecha</td>
+                                    <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_sinicial" required /></td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                        <fieldset class="row">
+                            <legend class="block-title-fieldset">Saldo Banco 31/12/1999</legend>
+                            <table class="tbl-parm-reliq">
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="saldoBancoEnUPAC" value="false" required /> Pesos
+                                        <input type="radio" name="saldoBancoEnUPAC" value="true" /> UPAC
+                                    </td>
+                                    <td>
+                                        <input type="number" class="no-numbar" name="monto_banco" required />
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                        <fieldset class="row">
+                            <legend class="block-title-fieldset">Tasas Pactadas</legend>
+                            <table class="tbl-parm-reliq">
+                                <tr>
+                                    <td>Interés Plazo</td>
+                                    <td style="padding-left: 10%;">
+                                        <input type="number" class="no-numbar" style="width: 50%;" step=".01" name="i_plazo" size="3" />
+                                        <input type="button" class="btn btn-custom" value="..." id="btn_dialog" /> % EA
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Factor</td>
+                                    <td style="padding-left: 10%;">
+                                        <select name="factor">
+                                            <option value="365">365</option>
+                                            <option value="360">360</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                        <div class="col-md-12">
+                            <button class="btn btn-custom" type="submit">Liquidar</button>
+                            <button class="btn btn-custom" type="button" id="guardar" disabled>Guardar</button>
+                        </div>
+                    </div>
+                    <div class="col-md-8" style="overflow:scroll">
+                        <table id="tbl_mov" class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Fecha</th>
+                                    <th>Pago</th>
+                                    <th>Seguros</th>
+                                    <th>Mora</th>
+                                    <th>OtrosDtos</th>
+                                    <th>Ficticio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><i class="fa fa-trash delete"></i></td>
+                                    <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_movimiento" /></td>
+                                    <td><input type="number" class="no-numbar" step=".01" name="pago_movimiento" /></td>
+                                    <td><input type="number" class="no-numbar" step=".01" name="seguro_movimiento" /></td>
+                                    <td><input type="number" class="no-numbar" step=".01" name="mora_movimiento" /></td>
+                                    <td><input type="number" class="no-numbar" step=".01" name="otros_movimiento" /></td>
+                                    <td><input type="checkbox" name="ficticio[]" value="true" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div id="tab-liquidacion" class="tab-pane fade">
+                <table class="display">
+                    <thead>
+                        <tr>
+                            <th>Fecha Pago (dd/mm/aaaa)</th>
+                            <th>Número Días</th>
+                            <th>Pago $</th>
+                            <th>Seguros $</th>
+                            <th>Mora $</th>
+                            <th>Otros Descuentos $</th>
+                            <th>Interés Remuneratorio</th>
+                            <th>Corrección Monetaria</th>
+                            <th>Abono Efectivo $</th>
+                            <th>Pago UVR</th>
+                            <th>Tasa Interés</th>
+                            <th>Interés Período UVR</th>
+                            <th>Amortización UVR</th>
+                            <th>Saldo UVR</th>
+                            <th>Intereses Período $</th>
+                            <th>Amortización $</th>
+                            <th>Saldo $$</th>
+                            <th>Cotización UVR</th>
+                            <th>Factor Días</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="tab-resumen" class="tab-pane fade">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="dialog" title="Tasa de Interés">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Valor Tasa (E/A)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="date" max="2100-01-01" min="1900-01-01" form="frm_reliquidacion" name="f_tasas[]" /></td>
+                        <td><input type="number" form="frm_reliquidacion" class="no-numbar" step=".01" name="tasas[]"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/procesos.js" asp-append-version="true"></script>
+    <script src="~/js/reliquidacion.js" asp-append-version="true"></script>
+}

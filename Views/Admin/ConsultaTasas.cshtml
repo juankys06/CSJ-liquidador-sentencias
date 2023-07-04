@@ -1,0 +1,62 @@
+﻿<div class="row" style="margin-top: 10px; @(TempData["Deleted"] == null ? "display: none;" : "")">
+    <div class="alert alert-success">@Html.Raw(TempData["Deleted"])</div>
+</div>
+<div class="row" style="margin-top: 10px; @(TempData["NotDeleted"] == null ? "display: none;" : "")">
+    <div class="alert alert-danger">@Html.Raw(TempData["NotDeleted"])</div>
+</div>
+<div class="row">
+    <div class="col-md-9">
+        <fieldset>
+            <legend>Criterios de Consulta</legend>
+            <form id="f_tasas" method="post">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="tipo">Tipo de Tasa</label>
+                        <select name="tipo" class="form-control" required>
+                            @foreach (var tasa in (TiposTasas[])ViewData["Tasas"])
+                            {
+                                <option value="@tasa.ID">@tasa.Nombre (@tasa.ID)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label for="fromDate">Desde: </label>
+                        <input type="date" name="fromDate" class="form-control" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="toDate">Hasta:</label>
+                        <input type="date" name="toDate" class="form-control" />
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <button type="submit" class="btn btn-custom">Consultar</button>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+    <div class="col-md-12">
+        <fieldset>
+            <legend>Resultado de la Consulta</legend>
+            <table id="t_tasas" class="table display" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Consecutivo</th>
+                        <th>Tipo Tasa</th>
+                        <th>Vigente Desde</th>
+                        <th>Vigente Hasta</th>
+                        <th>Valor Tasa</th>
+                        <th>Período</th>
+                        <th>Resolución</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </fieldset>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/consulta_tasas.js" asp-append-version="true"></script>
+}

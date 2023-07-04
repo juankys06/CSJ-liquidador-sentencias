@@ -1,0 +1,142 @@
+﻿@{
+    Layout = null;
+}
+
+@model Auditoria
+@using Newtonsoft.Json;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crear Proceso</title>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    <style>
+        #create_process input[name=codProceso], #create_process input[name=ciudad] {
+            width: 3.4em;
+        }
+
+        #create_process input[name=entidad], #create_process input[name=especialidad], #create_process input[name=numero] {
+            width: 2em;
+        }
+
+        #create_process input[name=despacho] {
+            width: 2.5em;
+        }
+
+        #create_process input[name=año] {
+            width: 3em;
+        }
+
+        #create_process input[name=año], #create_process input[name=codProceso] {
+            background-color: rgb(252, 243, 135);
+        }
+
+        #create_process table td input[type=text] {
+            width: 70%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form id="create_process" asp-controller="Home" asp-action="CrearProceso" method="post">
+                    <h3>Número Único del Proceso</h3>
+                    <input type="text" length="5" maxlength="5" pattern="\d{5}" name="ciudad" required />
+                    <input type="text" length="2" maxlength="2" pattern="\d{2}" name="entidad" required />
+                    <input type="text" length="2" maxlength="2" pattern="\d{2}" name="especialidad" required />
+                    <input type="text" length="3" maxlength="3" pattern="\d{3}" name="despacho" required />
+                    <input type="text" length="4" maxlength="4" pattern="\d{4}" name="año" required />
+                    <input type="text" length="5" maxlength="5" pattern="\d{5}" name="codProceso" required />
+                    <input type="text" length="2" maxlength="2" pattern="\d{2}" name="numero" required />
+
+                    <h3>Información del Proceso</h3>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Tipo de Proceso</td>
+                                <td>
+                                    <select class="form-control" name="tipo">
+                                        @foreach (TipoProceso element in ViewData["tipos"] as TipoProceso[])
+                                        {
+                                            @if(element.codiproc == "0000"){
+                                                <option selected value="@element.codiproc">@element.descproc.ToUpper()</option>
+                                            } else{
+                                                <option value="@element.codiproc">@element.descproc.ToUpper()</option>
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Clase de Proceso</td>
+                                <td>
+                                    <select class="form-control" name="clase">
+                                        @foreach (Clase element in ViewData["clases"] as Clase[])
+                                        {
+                                            @if(element.codiclas == "0000"){
+                                                <option selected value="@element.codiclas">@element.descclas.ToUpper()</option>
+                                            } else{
+                                                <option value="@element.codiclas">@element.descclas.ToUpper()</option>
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-control" name="descripcion">
+                                        @foreach (SubClase element in ViewData["descripciones"] as SubClase[])
+                                        {
+                                            @if(element.codisubc == "0000"){
+                                                <option selected value="@element.codisubc">@element.descsubc.ToUpper()</option>
+                                            } else {
+                                                <option value="@element.codisubc">@element.descsubc.ToUpper()</option>
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Demandante</td>
+                                <td><input class="form-control" type="text" name="demandante_nombre" placeholder="Nombre Y Apellido" list="lista_nombres" /></td>
+                                <td><input class="form-control" type="text" name="demandante_id" placeholder="Número de Documento" list="lista_identificacion" /></td>
+                            </tr>
+                            <tr>
+                                <td>Demandado</td>
+                                <td>
+                                    <input class="form-control" type="text" name="demandado_nombre" placeholder="Nombre Y Apellido" list="lista_nombres" />
+                                    <datalist id="lista_nombres">
+                                        @foreach (Dainfosuje element in ViewData["nombres"] as Dainfosuje[])
+                                        {
+                                            <option value="@element.nombsuje" />
+                                        }
+                                    </datalist>
+                                </td>
+                                <td>
+                                    <input class="form-control" type="text" name="demandado_id" placeholder="Número de Documento" list="lista_identificacion" />
+                                    <datalist id="lista_identificacion">
+                                        @foreach (Dainfosuje element in ViewData["nombres"] as Dainfosuje[])
+                                        {
+                                            <option value="@element.numesuje" />
+                                        }
+                                    </datalist>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <center>
+                        <button class="btn btn-primary" type="submit">Crear Proceso</button>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.form.min.js"></script>
+    <script src="~/js/process_creation.js" type="text/javascript"></script>
+</body>
+</html>

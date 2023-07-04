@@ -1,0 +1,415 @@
+/* ---------- Add/remove page ---------- */
+
+.modify-pages li {
+    position: relative;
+}
+
+.modify-pages .delete-tab {
+    background: #333 url(../images/portlet/close_borderless.png) no-repeat 50%;
+    cursor: pointer;
+    display: block;
+    height: 8px;
+    margin-top: -7px;
+    padding: 3px;
+    position: absolute;
+    right: 1px;
+    text-indent: -9999em;
+    top: 50%;
+    width: 8px;
+}
+
+/*------ Navigation portlet ------*/
+
+.nav-menu ul {
+    padding-left: 10px;
+}
+
+.nav-menu li a.ancestor {
+    font-weight: bold;
+}
+
+.nav-menu li a.selected {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* ---------- Page template selector ---------- */
+
+.aui-form-options {
+    border: 1px solid #aaa;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+    .aui-form-options input {
+        border-width: 0;
+        display: inline;
+        float: left;
+    }
+
+.aui-form-triggers {
+    float: left;
+}
+
+.aui-form-trigger {
+    background: #c4c4c4 url(../images/application/button_bg.png) repeat-x 0 0;
+    border-left: 1px solid #bbb;
+    display: inline-block;
+    float: left;
+}
+
+    .aui-form-trigger img {
+        background: url() no-repeat 50% 40%;
+        height: 25px;
+        padding: 0 3px;
+        vertical-align: middle;
+        width: 16px;
+    }
+
+    .aui-form-trigger:hover, .aui-form-trigger:focus {
+        background-color: #83b0ca;
+        background-image: url(../images/application/button_bg_over.png);
+    }
+
+.aui-trigger-selected {
+    background-color: #ebebeb;
+    background-image: url(../images/application/button_bg_selected.png);
+}
+
+    .aui-trigger-selected:hover, .aui-trigger-selected:focus {
+        background-color: #b7def4;
+        background-image: url(../images/application/button_bg_selected_over.png);
+    }
+
+.aui-options-trigger img {
+    background-image: url(../images/common/configuration.png);
+}
+
+.aui-save-trigger img {
+    background-image: url(../images/dock/my_place_current.png);
+}
+
+/* ---------- Navigation Top ---------- */
+#navigation {
+    background-color: #19325b;
+    clear: both;
+    margin: 0 auto 5px;
+    min-height: 2.2em;
+    padding: 0 5px;
+    position: relative;
+   
+}
+
+    #navigation > ul {
+        margin: 0 auto;
+    }
+
+    #navigation li {
+        position: relative;
+        vertical-align: top;
+    }
+
+    #navigation a {
+        color: #000;
+        font-size: 1.1em;
+        font-weight: bold;
+        margin: 0 1px;
+        padding: 3px 15px;
+        text-decoration: none;
+    }
+
+        #navigation .selected a, #navigation li.hover a, #navigation a:hover, #navigation a:focus, #navigation .child-menu li a, #navigation .yui3-dd-dragging, .lfr-navigation-proxy {
+            background: #3c91a5;
+            color: #FFF;
+            transition: all 0.5s;
+        }
+
+    #navigation li.hover .child-menu {
+        display: block;
+        position: absolute;
+        z-index: 250;
+    }
+
+    #navigation .child-menu {
+        display: none;
+    }
+
+        #navigation .child-menu .portlet-column.portlet-column.portlet-column {
+            display: table-cell;
+            vertical-align: top;
+        }
+
+        #navigation .child-menu li {
+            border-width: 0 0 1px;
+            display: block;
+            float: none;
+            margin: 0;
+        }
+
+            #navigation .child-menu li a {
+                cursor: pointer !important;
+            }
+
+.nav-menu-style-arrows ul {
+    list-style-image: url(..images/navigation/bullet_selected.png);
+}
+
+#navigation li .child-menu {
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: auto;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+#navigation li.hover div.child-menu {
+    height: auto;
+    width: auto;
+}
+
+#navigation .child-menu {
+    display: none;
+}
+
+    #navigation .child-menu li {
+        background: none repeat scroll 0 0;
+        border-width: 0 0 1px;
+        display: block;
+        float: none;
+        margin: 0;
+    }
+
+        #navigation .child-menu li a {
+            cursor: pointer !important;
+        }
+
+#navigation, #top_navigation, #footer_navigation {
+    clear: both;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+    #navigation ul, #top_navigation ul, #footer_navigation ul {
+        list-style: none;
+       
+    }
+
+    #navigation ul{
+        list-style: none;
+        background-color: #19325B;
+       
+    }
+
+.dropdown-item a, .dropdown-submenu a{
+    font-size: 11px !important;
+}
+
+#superiorMenu #top_navigation ul {
+    width: 100%;
+    font-size: 0.688em;
+    position: relative;
+    margin: 0 auto;
+}
+
+    #superiorMenu #top_navigation ul li.languageSelection {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        padding: 5px 0px;
+        background: none repeat scroll 0 0;
+    }
+
+#footerMenu #footer_navigation {
+    background: none repeat scroll 0 0;
+    text-align: center;
+    height: 35px;
+}
+
+    #footerMenu #footer_navigation ul {
+        height: 35px;
+    }
+
+#navigation li, #navigation a,
+#top_navigation li, #top_navigation a,
+#footer_navigation li, #footer_navigation a {
+    display: inline-block;
+}
+
+#navigation li, #top_navigation li, #footer_navigation li {
+    position: relative;
+    vertical-align: top;
+    margin: 0px -6px;
+}
+
+#footerMenu #footer_navigation li {
+    background: none repeat scroll 0 0;
+}
+
+#navigation a {
+    font-size: 1.116em;
+    color: #fff;
+    padding: 7px 23px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#top_navigation, #logos_entidades {
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#top_navigation ul .yellow {
+    background: #ffd400;
+    color: #000;
+}
+
+#top_navigation ul .blue {
+    background: #0056b1;
+}
+
+#top_navigation ul .red {
+    background: #ff0218;
+}
+
+#top_navigation ul .green {
+    background: #00cab0;
+}
+
+@media only screen and (min-width: 800px) {
+    #top_navigation, #top_navigation ul li a {
+        width: 100%;
+    }
+
+    #top_navigation ul li {
+        width: 20%;
+    }
+}
+
+#top_navigation ul li a {
+    font-weight: bold;
+    position: relative;
+    color: #FFF;
+    overflow: hidden;
+    height: 40px;
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 799px) {
+    #top_navigation ul li a {
+        width: 220px;
+    }
+}
+
+#top_navigation ul li a:before {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    padding: 10px 20px;
+    background: none repeat scroll 0% 0% #FFF;
+    color: black;
+    content: attr(title);
+    transition: transform 1s ease 0s;
+    height: 40px;
+    width: 100%;
+}
+
+/*
+ * Borrar si la última casilla mejora
+*/
+
+#top_navigation ul li:last-child a:before {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    padding: 5px 20px;
+    background: none repeat scroll 0% 0% #FFF;
+    color: black;
+    content: attr(title);
+    transition: transform 1s ease 0s;
+    height: 40px;
+    width: 100%;
+    line-height: 1;
+}
+
+#top_navigation ul li a span {
+    display: block;
+    position: relative;
+    padding: 8px 0px;
+    background: none repeat scroll 0% 0% #0F7C67;
+    transition: transform 1s ease 0s;
+    z-index: 2;
+    height: 40px;
+}
+
+#top_navigation ul li a:hover {
+    text-decoration: none;
+}
+
+    #top_navigation ul li a:hover span {
+        transform: translatex(100%);
+        width: 100%;
+        height: 40px;
+    }
+
+#footerMenu #footer_navigation a {
+    text-transform: none;
+    padding: 10px;
+}
+
+#footerMenu #footer_navigation span.lastUpdateDate {
+    display: inline-block;
+    font-size: 0.75em;
+    padding: 10px;
+}
+
+#navigation a span img, #top_navigation a span img, #footer_navigation a span img {
+    float: left;
+    padding-right: 5px;
+}
+
+#navigation li.last > a {
+    padding: 7px 25px;
+}
+
+#navigation .yui3-dd-drop a, #top_navigation .yui3-dd-drop a, #footer_navigation .yui3-dd-drop a {
+    cursor: move;
+}
+
+#footerMenu #footer_navigation .selected a, #footerMenu #footer_navigation li.hover a, #footerMenu #footer_navigation a:hover, #footerMenu #footer_navigation a:focus, #footerMenu #footer_navigation .child-menu li a, #footerMenu #footer_navigation .yui3-dd-dragging, #footerMenu .lfr-navigation-proxy {
+    background: none repeat scroll 0 0;
+}
+
+.nav-menu-style-arrows ul {
+    list-style-image: url(..images/navigation/bullet_selected.png);
+}
+.red {
+    color:black;
+}
+
+#login {
+    background-color: #fff;
+    width: 100%;
+    position: relative;
+    height: auto;
+    overflow: hidden;
+}
+
+#loginnav, #loginnav button {
+    font-size: 12px !important;
+}
+
+.navbar-nav  li a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#loginnav .navbar-btn {
+    margin-top: 0;
+    margin-bottom: 0;
+}

@@ -1,0 +1,21 @@
+﻿@model List<Datasainte>
+
+<div class="cuadro-tasas center-block">
+    <fieldset>
+        <legend>Tasas:</legend>
+        <table class="table table-responsive">
+            
+            <tbody>
+                @foreach (Datasainte element in @Model)
+                {
+                <tr>
+                    <td><b>@element.TipoTasa: </b><strong style="@(element.VigenteHasta < DateTime.Today ? "color: red;" : "color: green;")">@string.Format("{0:0.##}", element.ValorTasa)</strong>@(element.VigenteHasta < DateTime.Today ? "*" : "")</td>
+                    <td class="fecha-tasas">@element.VigenteDesde.ToString("dd/MM/yyyy")</td>
+                </tr>
+                }
+            </tbody>
+            <tfoot><tr><td>*<strong>Tasa no se encuentra Actualizada</strong></td></tr></tfoot>
+        </table>
+
+    </fieldset>
+</div>

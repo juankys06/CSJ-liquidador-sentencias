@@ -1,0 +1,115 @@
+﻿@{
+    Layout = null;
+}
+
+@model Auditoria
+@using Newtonsoft.Json;
+@using liquidador_web.Data;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auditoria</title>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <tr>
+                        <th>Acción</th>
+                        <td>@Model.evento</td>
+                    </tr>
+                    <tr>
+                        <th>Módulo</th>
+                        <td>@Model.modulo</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha</th>
+                        <td>@Model.fecha</td>
+                    </tr>
+                    <tr>
+                        <th>Usuario</th>
+                        <td><email mail-to="@Model.usuario.Email">@Model.usuario.Email</email></td>
+                    </tr>
+                    <tr>
+                        <th>Antes</th>
+                        @if (Model.modulo.Equals("Liquidaciones") && Model.logAnterior != null) {
+                        <td>@{var liquidacion = JsonConvert.DeserializeObject<Liquidaciones>(Model.logAnterior);}
+                            <strong>Fecha: </strong> @liquidacion.fecha, 
+                            <strong>Tipo de Liquidación: </strong> @liquidacion.tipo, <br />
+                            <strong>Archivo: </strong> <a href="@liquidacion.urlFile">@liquidacion.nameFile</a>
+                        </td>
+                            } else if (Model.modulo.Equals("Usuarios") && Model.logAnterior != null) {
+                        <td>@{var usuario = JsonConvert.DeserializeObject<LiquidadorUser>(Model.logAnterior);}
+                            <strong>Nombre Completo: </strong> @usuario.FullName<br />
+                            <strong>Email: </strong> <email mail-to="@usuario.Email">@usuario.Email</email><br />
+                            <strong>Verificado: </strong>@usuario.EmailConfirmed<br />
+                            <strong>Activo: </strong>@usuario.Active<br />
+                            <strong>Distrito: </strong>@usuario.CodDespacho
+                        </td>
+                                } else if (Model.modulo.Equals("Tasas") && Model.logAnterior != null) {
+                        <td>@{var tasa = JsonConvert.DeserializeObject<Datasainte>(Model.logAnterior);}
+                            <strong>Tipo de Tasa: </strong>@tasa.TipoTasa,
+                            <strong>Vigente desde: </strong>@tasa.VigenteDesde,
+                            <strong>Vigente Hasta: </strong>@tasa.VigenteHasta,
+                            <strong>Período: </strong>@tasa.Periodo,
+                            <strong>Resolución: </strong>@tasa.ResVigencia,
+                            <strong>Valor de la Tasa: </strong>@tasa.ValorTasa
+                        </td>
+                            }else if (Model.modulo.Equals("Ayuda") && Model.logAnterior != null) {
+                        <td>
+                            @{var ayuda = JsonConvert.DeserializeObject<Ayuda>(Model.logAnterior);}
+                            <strong>Titulo: </strong>@ayuda.titulo,
+                            <strong>Archivo: </strong>@Html.ActionLink("Archivo", "DownloadFile", new { fileName = ayuda.urlDocumento }),
+                            <strong>Roles: </strong>@ayuda.roles
+                        </td>
+                            }
+                        </tr>
+                    <tr>
+                        <th>Después</th>
+                        @if (Model.modulo.Equals("Liquidaciones") && Model.logActual != null) {
+                        <td>@{var liquidacion = JsonConvert.DeserializeObject<Liquidaciones>(Model.logActual);}
+                            <strong>Fecha: </strong> @liquidacion.fecha, 
+                            <strong>Tipo de Liquidación: </strong> @liquidacion.tipo.nombre, <br />
+                            <strong>Archivo: </strong> <a href="@liquidacion.urlFile">@liquidacion.nameFile</a>
+                        </td>
+                        } else if(Model.modulo.Equals("Usuarios") && Model.logActual != null){
+                        <td>@{var usuario = JsonConvert.DeserializeObject<LiquidadorUser>(Model.logActual);}
+                            <strong>Nombre Completo: </strong> @usuario.FullName<br />
+                            <strong>Email: </strong> <email mail-to="@usuario.Email">@usuario.Email</email><br />
+                            <strong>Verificado: </strong>@usuario.EmailConfirmed<br />
+                            <strong>Activo: </strong>@usuario.Active<br />
+                            <strong>Distrito: </strong>@usuario.CodDespacho
+                        </td>
+                        } else if (Model.modulo.Equals("Tasas") && Model.logActual != null) {
+                        <td>@{var tasa = JsonConvert.DeserializeObject<Datasainte>(Model.logActual);}
+                            <strong>Tipo de Tasa: </strong>@tasa.TipoTasa,
+                            <strong>Vigente desde: </strong>@tasa.VigenteDesde,
+                            <strong>Vigente Hasta: </strong>@tasa.VigenteHasta,
+                            <strong>Período: </strong>@tasa.Periodo,
+                            <strong>Resolución: </strong>@tasa.ResVigencia,
+                            <strong>Valor de la Tasa: </strong>@tasa.ValorTasa
+                        </td>
+                        }else if (Model.modulo.Equals("Ayuda") && Model.logActual != null) {
+                        <td>
+                            @{var ayuda = JsonConvert.DeserializeObject<Ayuda>(Model.logActual);}
+                            <strong>Titulo: </strong>@ayuda.titulo,
+                            <strong>Archivo: </strong>@Html.ActionLink("Archivo", "DownloadFile", new { fileName = ayuda.urlDocumento }),
+                            <strong>Roles: </strong>@ayuda.roles
+                        </td>
+                            }
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

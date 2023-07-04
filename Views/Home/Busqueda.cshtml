@@ -1,0 +1,140 @@
+﻿@model liquidador_web.Extra.Paginador<Liquidaciones>
+
+<div class="row">
+    <div class="col-md-12 formulario-auditoria">
+        <form asp-action="Busqueda" method="get" class="form-inline">
+            <div class="form-group">
+                <label for="q"></label>
+                <input type="text" name="q" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-custom">Buscar</button>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <div id="outdiv" style="text-align: center;">
+            <video id="video-preview" autoplay width="320" height="240"></video>
+            <canvas id="qr-canvas" class="hidden"></canvas>
+            <div>
+                <div id="task">Escaneando</div>
+                <div class="loading">
+                    <div class="loading-bar"></div>
+                    <div class="loading-bar"></div>
+                    <div class="loading-bar"></div>
+                </div>
+            </div>
+        </div>
+        <div id="result" style="text-align: center;"></div>
+    </div>
+    <div class="col-md-12 table-responsive">
+        <table class="table display">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Autor</th>
+                    <th>Tipo de Liquidación</th>
+                    <th>Número del proceso</th>
+                    <th>Documento de la Liquidación</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Liquidaciones elemento in Model)
+                {
+                    <tr>
+                        <td>@elemento.fecha</td>
+                        <td><email mail-to="@elemento.autor">@elemento.autor</email></td>
+                        <td>@elemento.tipo.nombre</td>
+                        <td>@elemento.llaveproc.A103llavproc</td>
+                        <td><a href="@elemento.urlFile">@elemento.nameFile</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "none" : "initial";
+            var nextDisabled = !Model.HasNextPage ? "none" : "initial";
+        }
+
+        <a asp-action="Busqueda"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           style="display: @prevDisabled">
+            Anterior
+        </a>
+        @for (int i = 1; i < Model.TotalPages + 1; i++)
+        {
+            <a asp-action="Busqueda" asp-route-pageNumber="@i"
+               style="font-weight: @(i == Model.PageIndex ? "bold" : "")">@i</a>
+        }
+        <a asp-action="Busqueda"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           style="display: @nextDisabled">
+            Siguiente
+        </a>
+    </div>
+</div>
+
+@section UpperScripts{
+    <script type="text/javascript" src="~/lib/webqr/grid.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/version.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/detector.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/formatinf.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/errorlevel.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/bitmat.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/datablock.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/bmparser.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/datamask.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/rsdecoder.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/gf256poly.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/gf256.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/decoder.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/qrcode.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/findpat.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/alignpat.js"></script>
+    <script type="text/javascript" src="~/lib/webqr/databr.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            /* Ask for "environnement" (rear) camera if available (mobile), will fallback to only available otherwise (desktop).
+                * User will be prompted if (s)he allows camera to be started */
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" }, audio: false }).then(function (stream) {
+                var video = document.getElementById("video-preview");
+                video.srcObject = stream;
+                video.setAttribute("playsinline", true); /* otherwise iOS safari starts fullscreen */
+                video.play();
+                setTimeout(tick, 100); /* We launch the tick function 100ms later (see next step) */
+            })
+            .catch(function (err) {
+                console.log(err); /* User probably refused to grant access*/
+            });
+        };
+
+        function tick() {
+            var video = document.getElementById("video-preview");
+            var qrCanvasElement = document.getElementById("qr-canvas");
+            var qrCanvas = qrCanvasElement.getContext("2d");
+
+            if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                qrCanvasElement.height = video.videoHeight;
+                qrCanvasElement.width = video.videoWidth;
+                qrCanvas.drawImage(video, 0, 0, qrCanvasElement.width, qrCanvasElement.height);
+                try {
+                    var result = qrcode.decode();
+                    document.getElementById('task').innerHTML = "Buscando";
+                    window.location = "/busqueda?q=" + result ;
+                    /* Video can now be stopped */
+                    //video.pause();
+                    //video.src = "";
+                    //video.srcObject.getVideoTracks().forEach(track => track.stop());
+
+                    /* Display Canvas and hide video stream */
+                    //qrCanvasElement.classList.remove("hidden");
+                    //video.classList.add("hidden");
+                } catch (e) {
+                    /* No Op */
+                }
+            }
+
+            /* If no QR could be decoded from image copied in canvas */
+            if (!video.classList.contains("hidden"))
+                setTimeout(tick, 100);
+        }
+    </script>
+}

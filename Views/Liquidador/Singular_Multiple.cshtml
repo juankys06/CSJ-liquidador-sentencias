@@ -1,0 +1,238 @@
+﻿<h2>Singular_Multiple</h2>
+
+<partial name="_Form_SearchProcess" />
+
+<div class="alert alert-warning" id="AlertFailed" hidden>
+    <strong>Auto Guardado!</strong> No se encontró la llave del proceso.
+</div>
+<div class="alert alert-success" id="AlertSuccess" hidden>
+    <strong>Auto Guardado!</strong> Los datos se han guardado.
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab1">Ingreso de datos para Liquidación</a></li>
+            <li><a data-toggle="tab" href="#tab2">Detalle Liquidación</a></li>
+            <li><a data-toggle="tab" href="#tab3">Resumen Liquidación</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="tab1" class="tab-pane fade in active">
+                <form method="post">
+                    <div class="col-md-12">
+                        <button class="btn btn-custom" type="button" id="add_capital">Agregar Capital</button>
+                        <button class="btn btn-custom" type="button" id="btn_liquidar">Liquidar</button>
+                        <button class="btn btn-custom" type="button" id="guardar" disabled>Guardar</button>
+                        <input type="hidden" name="idProceso" />
+                        <table class="display" id="datos-liq">
+                            <thead>
+                                <tr>
+                                    <th>Capital</th>
+                                    <th>FInicioOblig</th>
+                                    <th>FFinalObli</th>
+                                    <th>FLiquidación</th>
+                                    <th>IntPlazoPactado</th>
+                                    <th>IntPlazo</th>
+                                    <th>TasaRefIntPlazo</th>
+                                    <th>IntMoraPactado</th>
+                                    <th>InteresMora</th>
+                                    <th>TasaRefIntMora</th>
+                                    <th>Sanción 20%</th>
+                                    <th>Base360</th>
+                                    <th>Puntos mora</th>
+                                    <th>Puntos Plazo</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </form>
+                <div class="col-md-12" style="margin-top: 2em;">
+                    <h3 style="text-align: center;">Liquidaciones Guardadas</h3>
+                    <table class="display" id="guardados">
+                        <thead>
+                            <tr>
+                                <th>Nro. Único</th>
+                                <th>Tipo Liquidación</th>
+                                @*<th>Consecutivo</th>*@
+                                <th>Fecha Elaboración</th>
+                                <th>Creador</th>
+                                <th>Guardado</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tab2" class="tab-pane fade">
+                <label>Ver liquidación para el capital</label>
+                <select id="s_liquidacion"></select>
+
+                <div class="pull-right">
+                    <input type="checkbox" id="ver_resumen" /> Ver resumenes de liquidación de este capital
+                </div>
+                <table id="t_liquidacion" class="display">
+                    <thead>
+                        <tr>
+                            <th>Desde (dd/mm/aaaa)</th>
+                            <th>Hasta (dd/mm/aaaa)</th>
+                            <th>NoDias</th>
+                            <th>TasaAnual</th>
+                            <th>TasaMáxima</th>
+                            <th>IntAplicado</th>
+                            <th>InterésEfectivo</th>
+                            <th>Capital</th>
+                            <th>CapitalALiquidar</th>
+                            <th>IntPlazoPeriodo</th>
+                            <th>SaldoIntPlazo</th>
+                            <th>InteresMoraPeríodo</th>
+                            <th>SaldoIntMora</th>
+                            <th>Abonos</th>
+                            <th>SubTotal</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <table id="t_resumen" class="table oculto">
+                    <thead>
+                        <tr>
+                            <th>Asunto</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div id="tab3" class="tab-pane fade">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Asunto</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <br /><br />
+                <a role="button" asp-area="" asp-controller="Liquidador" asp-action="DescargaExcel" id="descargarExcel"><span class="fas fa-file-excel"><br />Descargar Excel</span></a>
+                <br />
+                @if (User.IsInRole("Juez"))
+                {
+                    <a role="button" href="#" id="descargarPdf"><span class="far fa-file-pdf"><br />Descargar PDF</span></a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dialog" title="Tipo de Interés Variable">
+    <h3>Tasa de Referencia</h3>
+    <input type="radio" name="i_corriente_var" value="IBC" form="sng_mult" checked /> Interés Bancario Corriente
+    <br /><br />
+    <input type="radio" name="i_corriente_var" form="sng_mult" value="MIC" /> Interés Bancario Corriente MICROCRÉDITO
+    <br /><br />
+    <input type="radio" name="i_corriente_var" form="sng_mult" value="DTF" /> DTF + Puntos
+    <input type="number" class="@*no-numbar*@" name="puntos_corriente" form="sng_mult" id="corriente_dtf" step=".01" disabled />
+    <br /><br />
+    <input type="radio" name="i_corriente_var" form="sng_mult" value="IPC" /> IPC + Puntos
+    <input type="number" class="@*no-numbar*@" name="puntos_corriente" form="sng_mult" id="corriente_ipc" step=".01" disabled />
+</div>
+
+<div id="dialog2" title="Tipo de Interés Variable">
+    <h3>Tasa de Referencia</h3>
+    <input type="radio" name="i_mora_var" form="sng_mult" value="IBC" checked /> Interés Bancario Corriente
+    <br /><br />
+    <input type="radio" name="i_mora_var" form="sng_mult" value="MIC" /> Interés Bancario Corriente MICROCRÉDITO
+    <br /><br />
+    <input type="radio" name="i_mora_var" form="sng_mult" value="DTF" /> DTF + Puntos
+    <input type="number" class="@*no-numbar*@" name="puntos_mora" form="sng_mult" id="mora_dtf" step=".01" disabled />
+    <br /><br />
+    <input type="radio" name="i_mora_var" form="sng_mult" value="IPC" /> IPC + Puntos
+    <input type="number" class="@*no-numbar*@" name="puntos_mora" form="sng_mult" id="mora_ipc" step=".01" disabled />
+</div>
+
+<div id="dialog3" title="Insertar datos de la Liquidación">
+    <form id="sng_mult">
+        <div class="row">
+            <div class="col-md-4">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Capital</td>
+                            <td><input type="number" step=".01" class="no-numbar" name="capital" required /></td>
+                        </tr>
+                        <tr>
+                            <td>Fecha Inicio Obligación</td>
+                            <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_obligacion" required /></td>
+                        </tr>
+                        <tr>
+                            <td>Fecha Exigibilidad</td>
+                            <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_exigibilidad" required /></td>
+                        </tr>
+                        <tr>
+                            <td>Fecha Liquidación</td>
+                            <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_liquidacion" required /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                Aplica Sanción 20% Art. 731 CC. cheques <input type="checkbox" name="aplica_sancion" />
+                <br /><br />
+
+                <br />
+                <label>Observaciones:</label><br />
+                <textarea name="observaciones" style="resize:none; overflow:auto;" rows="5" cols="40"></textarea>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <label>Interés Corriente</label>
+                    <br />
+                    <input type="radio" name="i_corriente" value="variable" /> Variable
+                    <br />
+                    <input type="radio" name="i_corriente" value="pactado" /> Pactado
+                    <input type="number" class="@*no-numbar*@" step=".01" disabled required name="tasa_pacto_a" />
+                </div>
+                <div>
+                    <label>Interés de Mora</label>
+                    <br />
+                    <input type="radio" name="i_mora" value="variable" /> Variable
+                    <br />
+                    <input type="radio" name="i_mora" value="pactado" /> Pactado o Legal
+                    <input type="number" class="@*no-numbar*@" step=".01" disabled required name="tasa_pacto_b" />
+                </div>
+            </div>
+            <div class="col-md-4" id="t_abonos">
+                <fieldset>
+                    <legend>Abonos efectuados en este capital</legend>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Fecha</th>
+                                <th>Monto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fa fa-trash delete"></i></td>
+                                <td><input type="date" max="2100-01-01" min="1900-01-01" name="f_abono[]" /></td>
+                                <td><input type="number" step=".01" class="no-numbar" name="abono[]" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <input type="button" class="btn btn-custom" id="add_abono" value="Otro Abono" />
+                    <button class="btn btn-custom" type="button" id="btn_completar_abono">Completar</button>
+                </fieldset>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <script src="~/js/procesos.js" asp-append-version="true"></script>
+    <script src="~/js/multiple.js" asp-append-version="true"></script>
+}
